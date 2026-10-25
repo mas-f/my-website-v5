@@ -474,6 +474,14 @@
       "description": "A paper-lift panel with a deep-paper header and a flat bordered body; one per section.",
       "html": "<div class=\"ds-sheet\"><div class=\"ds-sheet-header\"><p>Lembar data</p><h3>Profil publik</h3></div><div class=\"ds-sheet-body\">Identitas yang tampil di situs, tautan publik, dan file CV yang bisa diunduh.</div></div>",
       "css": ".ds-sheet {\n  background: var(--color-paper-raised);\n  border: 1px solid var(--color-line);\n  box-shadow: 0 1px 0 rgb(21 24 27 / 0.06), 0 18px 40px -28px rgb(21 24 27 / 0.28);\n  color: var(--color-ink);\n  font-family: var(--font-sans);\n}\n.ds-sheet-header {\n  border-bottom: 1px solid var(--color-line);\n  background: var(--color-paper-deep);\n  padding: 0.75rem 1rem;\n}\n.ds-sheet-header p {\n  margin: 0;\n  font-family: var(--font-mono);\n  font-size: 0.5625rem;\n  letter-spacing: 0.14em;\n  text-transform: uppercase;\n  color: var(--color-ink-faint);\n}\n.ds-sheet-header h3 {\n  margin: 0.25rem 0 0;\n  font-family: var(--font-display);\n  font-size: 1.5rem;\n  font-weight: 600;\n  letter-spacing: -0.03em;\n  line-height: 1.1;\n}\n.ds-sheet-body {\n  padding: 1rem;\n  font-size: 0.9375rem;\n  line-height: 1.75;\n  color: var(--color-ink-soft);\n}"
+    },
+    {
+      "name": "Profile Portrait Plate",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "The home hero's 4:5 portrait plate: a warm-ruled frame, paper-deep ground, and a bottom metadata strip. A real photo fills it with object-fit: cover; a provisional FOTO placeholder holds the space until upload.",
+      "html": "<figure class=\"ds-portrait\"><div class=\"ds-portrait-frame\"><span class=\"ds-portrait-placeholder\">FOTO</span><p>Foto belum diunggah</p></div><figcaption><span>Portrait / 01</span><span>Garut, Indonesia</span></figcaption></figure>",
+      "css": ".ds-portrait {\n  border: 1px solid var(--color-line);\n  background: var(--color-paper-raised);\n  font-family: var(--font-sans);\n}\n.ds-portrait-frame {\n  display: grid;\n  aspect-ratio: 4 / 5;\n  place-items: center;\n  background: var(--color-paper-deep);\n  padding: 1.5rem;\n  text-align: center;\n}\n.ds-portrait-placeholder {\n  display: grid;\n  width: 5rem;\n  height: 5rem;\n  place-items: center;\n  border: 1px solid var(--color-ink);\n  background: var(--color-ink);\n  color: var(--color-paper-raised);\n  font-family: var(--font-mono);\n  font-size: 0.6875rem;\n  letter-spacing: 0.18em;\n}\n.ds-portrait-frame p {\n  margin-top: 1rem;\n  font-family: var(--font-mono);\n  font-size: 0.5625rem;\n  letter-spacing: 0.14em;\n  text-transform: uppercase;\n  color: var(--color-ink-faint);\n}\n.ds-portrait figcaption {\n  display: flex;\n  justify-content: space-between;\n  gap: 0.75rem;\n  border-top: 1px solid var(--color-line);\n  background: var(--color-paper-deep);\n  padding: 0.5rem 0.75rem;\n  font-family: var(--font-mono);\n  font-size: 0.5625rem;\n  letter-spacing: 0.14em;\n  text-transform: uppercase;\n  color: var(--color-ink-faint);\n}"
     }
   ],
   "narrative": {
@@ -484,8 +492,10 @@
       "Graphite ink for reading, cobalt for annotation and interaction, manila for index tabs.",
       "Ledger rows and ruled sheets instead of card grids and rounded panels.",
       "A 3/9 editorial split with a sticky left margin for section index and context.",
+      "A 4:5 profile portrait plate anchors the home hero; the system map sits with the three process steps.",
       "Mono metadata at small sizes, with generous space around display type.",
-      "Soft, offset paper-lift shadows; 1px warm rules are the default separator."
+      "Soft, offset paper-lift shadows; 1px warm rules are the default separator.",
+      "Editable site logo replaces the FA monogram, sits directly on paper, and uses a raised-paper backing on dark auth surfaces. The browser tab icon follows the uploaded logo via a generated 64×64 PNG favicon, with public/favicon.svg as fallback."
     ],
     "rules": [
       {

@@ -2,6 +2,7 @@
 
 use App\Models\Project;
 use App\Models\SiteProfile;
+use Illuminate\Support\Facades\Storage;
 
 beforeEach(function () {
     SiteProfile::factory()->create();
@@ -71,6 +72,64 @@ test('cv link is hidden until a cv is uploaded', function () {
     $this->get(route('home'))
         ->assertOk()
         ->assertSee('Unduh CV');
+});
+
+test('site logo replaces the fa monogram when it is present', function () {
+    $profile = SiteProfile::current();
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee('FA')
+        ->assertSee('favicon.svg');
+
+    $profile->update([
+        'logo_path' => 'branding/logo/logo.png',
+    ]);
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee($profile->logo_url)
+        ->assertDontSee('FA');
+});
+
+test('site favicon uses the generated logo favicon when available', function () {
+    Storage::fake('public');
+
+    $profile = SiteProfile::current();
+    $profile->update([
+        'logo_path' => 'branding/logo/logo.webp',
+    ]);
+
+    Storage::disk('public')->put(SiteProfile::faviconPathFor($profile->logo_path), 'png');
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee($profile->favicon_url)
+        ->assertSee('type="image/png"', false);
+});
+
+test('home shows the profile photo when it is uploaded', function () {
+    Storage::fake('public');
+
+    $profile = SiteProfile::current();
+    $profile->update([
+        'photo_path' => 'profile/photo/fikri.jpg',
+        'photo_original_name' => 'fikri.jpg',
+    ]);
+    Storage::disk('public')->put($profile->photo_path, 'photo');
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee($profile->photo_url)
+        ->assertSee('Foto '.$profile->name)
+        ->assertDontSee('Foto belum diunggah');
+});
+
+test('home shows a photo placeholder when no profile photo is uploaded', function () {
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee('Foto belum diunggah')
+        ->assertSee('System map / request path');
 });
 
 test('linkedin link is hidden when no linkedin url is set', function () {

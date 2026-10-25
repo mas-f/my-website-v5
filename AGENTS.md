@@ -4,7 +4,7 @@
 
 - Laravel 13 portfolio for Fikri Amrullah on PHP 8.4 locally; `composer.json` requires PHP `^8.3`.
 - Public pages: `/`, `/about`, `/skills`, `/projects`, `/projects/{slug}`, `/services`, `/contact`.
-- Admin lives under `/admin`: dashboard, project CRUD, gallery/thumbnail uploads, messages, public profile/CV, and account settings. There is no public registration.
+- Admin lives under `/admin`: dashboard, project CRUD, gallery/thumbnail uploads, messages, public profile/photo/CV, and account settings. There is no public registration.
 - `PROMPT.MD` is the authoritative product spec (Indonesian). `PRODUCT.md` records confirmed product truth and constraints. `DESIGN.md` and `.impeccable/design.json` record the shipped visual system; update both when the design changes.
 - Domain models: `Project` (draft/published, featured, sort order, placeholder flag), optional `ProjectImage` gallery, `ContactMessage`, singleton `SiteProfile`, and `User` as admin.
 - UI copy is Indonesian. Do not invent personal data, clients, metrics, achievements, or project outcomes; leave obvious placeholders until the user supplies real content.

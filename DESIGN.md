@@ -191,6 +191,7 @@ The material palette is warm and low-chroma, with soft paper-lift shadows reserv
 - Graphite ink for reading, cobalt for annotation and interaction, manila for index tabs.
 - Ledger rows and ruled sheets instead of card grids and rounded panels.
 - A 3/9 editorial split with a sticky left margin for section index and context.
+- A 4:5 profile portrait plate anchors the home hero; the system map sits with the three process steps.
 - Mono metadata at small sizes, with generous space around display type.
 - Soft, offset paper-lift shadows; 1px warm rules are the default separator.
 
@@ -275,7 +276,7 @@ The literal steps used by the shipped components, from smallest annotation to di
 
 ## Layout
 
-The public site uses a 1440px maximum container with 20px gutters on mobile, 32px at `sm`, and 48px at `lg`. The core editorial grid is 12 columns. Section headers and page introductions use a 3/9 split: a sticky left margin for the section index, status, and short context, with the heading and content in the right nine columns. The home hero uses a 7/5 split so the name and statement occupy the left field while the system map and field note occupy the right.
+The public site uses a 1440px maximum container with 20px gutters on mobile, 32px at `sm`, and 48px at `lg`. The core editorial grid is 12 columns. Section headers and page introductions use a 3/9 split: a sticky left margin for the section index, status, and short context, with the heading and content in the right nine columns. The home hero uses a 7/5 split so the name and statement occupy the left field while the 4:5 profile portrait plate and field note occupy the right.
 
 Projects are not a card grid. The index is a ledger: a 1px rule above and below each row, with the entry number in the first column, the case-study summary in the middle, and a technical plate on the right. On mobile the ledger collapses to a single column while preserving the number, stamps, title, summary, and plate. The public navigation is sticky; the top metadata strip (location / role / build-log number) stays visible above it.
 
@@ -345,12 +346,15 @@ Corners are not softened to signal friendliness. The system's warmth comes from 
 
 ### Navigation
 - **Style:** Sticky header with a top metadata strip and a second row for the wordmark, desktop nav, and actions. Nav links are 0.875rem Instrument Sans with a 1px cobalt underline that scales from the left on hover and `aria-current="page"`.
+- **Wordmark:** The uploaded site logo replaces the FA monogram when present. It sits directly on paper surfaces; on the dark auth panel it gets a raised-paper backing so the mark stays legible. The FA monogram remains the fallback. The browser tab icon follows the uploaded logo via a generated 64×64 PNG favicon, falling back to `public/favicon.svg` when no logo is set.
 - **Mobile:** The desktop nav and actions are hidden below `lg`; a bordered “Menu” button toggles a full-width disclosure panel. The panel uses the `hidden` class, not the HTML `hidden` attribute, so responsive utilities and the toggle can coexist.
 - **Admin:** A 250px sidebar at `lg`, sticky below the top bar, with active rows marked by a cobalt-wash fill, deep-cobalt text, and a 1px cobalt left rule. Below `lg` the same panel is a disclosure above the main content.
 
 ### Signature Components
 
-**System Map.** A Laravel request path drawn as a field diagram: request → route → controller → model → MySQL → Blade → response. Hairline cobalt traces, mono labels, and a `Ulangi alur` control that replays the line-drawing animation. The diagram is the first-viewport proof of how the developer thinks; on mobile it becomes a numbered list.
+**Profile Portrait Plate.** The home hero's right field: a 4:5 portrait frame with a 1px warm rule, paper-deep ground, and a bottom metadata strip carrying the plate label and location. A real photo fills the frame with `object-fit: cover`; without one, a provisional “FOTO” monogram and “Foto belum diunggah” label hold the space. The plate is never cropped or resized on the server and is never replaced with a stock portrait.
+
+**System Map.** A Laravel request path drawn as a field diagram: request → route → controller → model → MySQL → Blade → response. Hairline cobalt traces, mono labels, and a `Ulangi alur` control that replays the line-drawing animation. The diagram lives in the “Cara kerja” section below the three process steps, where it explains the request path; on mobile it becomes a numbered list.
 
 **Project Plate.** A technical thumbnail or authored SVG diagram framed as a plate, with a plate number, category stamp, stack count, and “Contoh” / “Log” marker. It is the visual evidence attached to each ledger entry, not a stock image card.
 

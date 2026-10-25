@@ -1,12 +1,27 @@
 <?php
 
+use App\Models\SiteProfile;
 use App\Models\User;
+use Illuminate\Support\Facades\Storage;
 
 test('admin login page renders', function () {
     $this->get(route('login'))
         ->assertOk()
         ->assertSee('Masuk.')
         ->assertDontSee('Daftar');
+});
+
+test('login page uses the uploaded site logo as favicon', function () {
+    Storage::fake('public');
+
+    $profile = SiteProfile::factory()->create([
+        'logo_path' => 'branding/logo/logo.png',
+    ]);
+    Storage::disk('public')->put(SiteProfile::faviconPathFor($profile->logo_path), 'png');
+
+    $this->get(route('login'))
+        ->assertOk()
+        ->assertSee($profile->favicon_url);
 });
 
 test('guests are redirected from the admin area', function () {
