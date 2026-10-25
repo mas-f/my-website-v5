@@ -1,0 +1,578 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-25T00:00:00.000Z",
+  "title": "Design System: Fikri Amrullah — Build Log",
+  "extensions": {
+    "colorMeta": {
+      "cobalt": {
+        "role": "primary",
+        "displayName": "Annotation Cobalt",
+        "canonical": "#1f4ed8",
+        "tonalRamp": [
+          "oklch(15% 0.217 264.7)",
+          "oklch(25% 0.217 264.7)",
+          "oklch(35% 0.217 264.7)",
+          "oklch(45% 0.217 264.7)",
+          "oklch(55% 0.217 264.7)",
+          "oklch(68% 0.217 264.7)",
+          "oklch(82% 0.217 264.7)",
+          "oklch(95% 0.217 264.7)"
+        ]
+      },
+      "cobalt-deep": {
+        "role": "primary",
+        "displayName": "Deep Annotation",
+        "canonical": "#173aa8",
+        "tonalRamp": [
+          "oklch(15% 0.180 265.1)",
+          "oklch(25% 0.180 265.1)",
+          "oklch(35% 0.180 265.1)",
+          "oklch(45% 0.180 265.1)",
+          "oklch(55% 0.180 265.1)",
+          "oklch(68% 0.180 265.1)",
+          "oklch(82% 0.180 265.1)",
+          "oklch(95% 0.180 265.1)"
+        ]
+      },
+      "cobalt-wash": {
+        "role": "primary",
+        "displayName": "Cobalt Wash",
+        "canonical": "#e8edfb",
+        "tonalRamp": [
+          "oklch(15% 0.020 270.2)",
+          "oklch(25% 0.020 270.2)",
+          "oklch(35% 0.020 270.2)",
+          "oklch(45% 0.020 270.2)",
+          "oklch(55% 0.020 270.2)",
+          "oklch(68% 0.020 270.2)",
+          "oklch(82% 0.020 270.2)",
+          "oklch(95% 0.020 270.2)"
+        ]
+      },
+      "stamp": {
+        "role": "secondary",
+        "displayName": "Status Stamp",
+        "canonical": "#b4432f",
+        "tonalRamp": [
+          "oklch(15% 0.151 32.2)",
+          "oklch(25% 0.151 32.2)",
+          "oklch(35% 0.151 32.2)",
+          "oklch(45% 0.151 32.2)",
+          "oklch(55% 0.151 32.2)",
+          "oklch(68% 0.151 32.2)",
+          "oklch(82% 0.151 32.2)",
+          "oklch(95% 0.151 32.2)"
+        ]
+      },
+      "stamp-wash": {
+        "role": "secondary",
+        "displayName": "Stamp Wash",
+        "canonical": "#f3e4df",
+        "tonalRamp": [
+          "oklch(15% 0.018 39.4)",
+          "oklch(25% 0.018 39.4)",
+          "oklch(35% 0.018 39.4)",
+          "oklch(45% 0.018 39.4)",
+          "oklch(55% 0.018 39.4)",
+          "oklch(68% 0.018 39.4)",
+          "oklch(82% 0.018 39.4)",
+          "oklch(95% 0.018 39.4)"
+        ]
+      },
+      "manila": {
+        "role": "tertiary",
+        "displayName": "Index Manila",
+        "canonical": "#e7dcc2",
+        "tonalRamp": [
+          "oklch(15% 0.037 87.8)",
+          "oklch(25% 0.037 87.8)",
+          "oklch(35% 0.037 87.8)",
+          "oklch(45% 0.037 87.8)",
+          "oklch(55% 0.037 87.8)",
+          "oklch(68% 0.037 87.8)",
+          "oklch(82% 0.037 87.8)",
+          "oklch(95% 0.037 87.8)"
+        ]
+      },
+      "manila-deep": {
+        "role": "tertiary",
+        "displayName": "Manila Edge",
+        "canonical": "#d8c8a4",
+        "tonalRamp": [
+          "oklch(15% 0.051 86.9)",
+          "oklch(25% 0.051 86.9)",
+          "oklch(35% 0.051 86.9)",
+          "oklch(45% 0.051 86.9)",
+          "oklch(55% 0.051 86.9)",
+          "oklch(68% 0.051 86.9)",
+          "oklch(82% 0.051 86.9)",
+          "oklch(95% 0.051 86.9)"
+        ]
+      },
+      "manila-ink": {
+        "role": "tertiary",
+        "displayName": "Manila Ink",
+        "canonical": "#6f5c33",
+        "tonalRamp": [
+          "oklch(15% 0.063 85.2)",
+          "oklch(25% 0.063 85.2)",
+          "oklch(35% 0.063 85.2)",
+          "oklch(45% 0.063 85.2)",
+          "oklch(55% 0.063 85.2)",
+          "oklch(68% 0.063 85.2)",
+          "oklch(82% 0.063 85.2)",
+          "oklch(95% 0.063 85.2)"
+        ]
+      },
+      "success": {
+        "role": "tertiary",
+        "displayName": "Verified Green",
+        "canonical": "#2f6b4f",
+        "tonalRamp": [
+          "oklch(15% 0.078 161.1)",
+          "oklch(25% 0.078 161.1)",
+          "oklch(35% 0.078 161.1)",
+          "oklch(45% 0.078 161.1)",
+          "oklch(55% 0.078 161.1)",
+          "oklch(68% 0.078 161.1)",
+          "oklch(82% 0.078 161.1)",
+          "oklch(95% 0.078 161.1)"
+        ]
+      },
+      "success-wash": {
+        "role": "tertiary",
+        "displayName": "Verified Wash",
+        "canonical": "#e6f0e9",
+        "tonalRamp": [
+          "oklch(15% 0.014 155.6)",
+          "oklch(25% 0.014 155.6)",
+          "oklch(35% 0.014 155.6)",
+          "oklch(45% 0.014 155.6)",
+          "oklch(55% 0.014 155.6)",
+          "oklch(68% 0.014 155.6)",
+          "oklch(82% 0.014 155.6)",
+          "oklch(95% 0.014 155.6)"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "#f5f3ec",
+        "tonalRamp": [
+          "oklch(15% 0.010 93.6)",
+          "oklch(25% 0.010 93.6)",
+          "oklch(35% 0.010 93.6)",
+          "oklch(45% 0.010 93.6)",
+          "oklch(55% 0.010 93.6)",
+          "oklch(68% 0.010 93.6)",
+          "oklch(82% 0.010 93.6)",
+          "oklch(95% 0.010 93.6)"
+        ]
+      },
+      "paper-raised": {
+        "role": "neutral",
+        "displayName": "Raised Paper",
+        "canonical": "#fbfaf6",
+        "tonalRamp": [
+          "oklch(15% 0.005 95.1)",
+          "oklch(25% 0.005 95.1)",
+          "oklch(35% 0.005 95.1)",
+          "oklch(45% 0.005 95.1)",
+          "oklch(55% 0.005 95.1)",
+          "oklch(68% 0.005 95.1)",
+          "oklch(82% 0.005 95.1)",
+          "oklch(95% 0.005 95.1)"
+        ]
+      },
+      "paper-deep": {
+        "role": "neutral",
+        "displayName": "Deep Paper",
+        "canonical": "#ebe7db",
+        "tonalRamp": [
+          "oklch(15% 0.017 91.6)",
+          "oklch(25% 0.017 91.6)",
+          "oklch(35% 0.017 91.6)",
+          "oklch(45% 0.017 91.6)",
+          "oklch(55% 0.017 91.6)",
+          "oklch(68% 0.017 91.6)",
+          "oklch(82% 0.017 91.6)",
+          "oklch(95% 0.017 91.6)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Graphite Ink",
+        "canonical": "#15181b",
+        "tonalRamp": [
+          "oklch(15% 0.008 248.2)",
+          "oklch(25% 0.008 248.2)",
+          "oklch(35% 0.008 248.2)",
+          "oklch(45% 0.008 248.2)",
+          "oklch(55% 0.008 248.2)",
+          "oklch(68% 0.008 248.2)",
+          "oklch(82% 0.008 248.2)",
+          "oklch(95% 0.008 248.2)"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Soft Graphite",
+        "canonical": "#4c5258",
+        "tonalRamp": [
+          "oklch(15% 0.013 248.1)",
+          "oklch(25% 0.013 248.1)",
+          "oklch(35% 0.013 248.1)",
+          "oklch(45% 0.013 248.1)",
+          "oklch(55% 0.013 248.1)",
+          "oklch(68% 0.013 248.1)",
+          "oklch(82% 0.013 248.1)",
+          "oklch(95% 0.013 248.1)"
+        ]
+      },
+      "ink-faint": {
+        "role": "neutral",
+        "displayName": "Faint Graphite",
+        "canonical": "#5f666c",
+        "tonalRamp": [
+          "oklch(15% 0.013 243.8)",
+          "oklch(25% 0.013 243.8)",
+          "oklch(35% 0.013 243.8)",
+          "oklch(45% 0.013 243.8)",
+          "oklch(55% 0.013 243.8)",
+          "oklch(68% 0.013 243.8)",
+          "oklch(82% 0.013 243.8)",
+          "oklch(95% 0.013 243.8)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Warm Rule",
+        "canonical": "#d8d4c7",
+        "tonalRamp": [
+          "oklch(15% 0.018 92.7)",
+          "oklch(25% 0.018 92.7)",
+          "oklch(35% 0.018 92.7)",
+          "oklch(45% 0.018 92.7)",
+          "oklch(55% 0.018 92.7)",
+          "oklch(68% 0.018 92.7)",
+          "oklch(82% 0.018 92.7)",
+          "oklch(95% 0.018 92.7)"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Strong Rule",
+        "canonical": "#b9b4a5",
+        "tonalRamp": [
+          "oklch(15% 0.022 91.6)",
+          "oklch(25% 0.022 91.6)",
+          "oklch(35% 0.022 91.6)",
+          "oklch(45% 0.022 91.6)",
+          "oklch(55% 0.022 91.6)",
+          "oklch(68% 0.022 91.6)",
+          "oklch(82% 0.022 91.6)",
+          "oklch(95% 0.022 91.6)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Home-page name and the largest statements only; never body copy."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section headings and public page titles."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sheet headings, project-row titles, and admin panel titles."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Long-form case-study copy capped at 68ch, plus UI body copy at 0.875–1rem."
+      },
+      "label": {
+        "displayName": "Label / Mono",
+        "purpose": "Metadata, field labels, table headers, stamps, dates, and index numbers."
+      },
+      "micro": {
+        "displayName": "Micro",
+        "purpose": "9px mono metadata in plate captions, stamp details, and dense admin labels."
+      },
+      "stamp": {
+        "displayName": "Stamp",
+        "purpose": "0.625rem mono labels for stamps, filter chips, and compact status text."
+      },
+      "meta": {
+        "displayName": "Meta",
+        "purpose": "10px mono metadata in the top strip, plate numbers, and compact admin tables."
+      },
+      "index": {
+        "displayName": "Index",
+        "purpose": "0.65rem mono labels for index tabs and narrow metadata columns."
+      },
+      "helper": {
+        "displayName": "Helper",
+        "purpose": "0.8125rem helper text, inline validation, and small admin descriptions."
+      },
+      "ui": {
+        "displayName": "UI Body",
+        "purpose": "0.875rem navigation links, UI body copy, and table body."
+      },
+      "field": {
+        "displayName": "Field",
+        "purpose": "0.9375rem form fields and compact reading copy."
+      },
+      "hero-body": {
+        "displayName": "Hero Body",
+        "purpose": "0.975rem hero supporting paragraph, slightly larger than UI body."
+      },
+      "prose-h3": {
+        "displayName": "Prose H3",
+        "purpose": "1.3rem h3 inside long-form case-study copy."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sheet",
+        "value": "0 1px 0 rgb(21 24 27 / 0.06), 0 18px 40px -28px rgb(21 24 27 / 0.28)",
+        "purpose": "Raised forms, contact sheets, and the login card."
+      },
+      {
+        "name": "lift",
+        "value": "0 2px 0 rgb(21 24 27 / 0.04), 0 10px 24px -16px rgb(21 24 27 / 0.25)",
+        "purpose": "Hover lift for plates and interactive raised elements."
+      },
+      {
+        "name": "stamp",
+        "value": "0 1px 0 rgb(21 24 27 / 0.08)",
+        "purpose": "Small status stamps and index tabs."
+      },
+      {
+        "name": "focus-ring",
+        "value": "0 0 0 3px rgb(31 78 216 / 0.12)",
+        "purpose": "Field focus ring paired with a cobalt border."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "ease-out",
+        "purpose": "Default color, border, and opacity transition."
+      },
+      {
+        "name": "ease-authored",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Diagram line-drawing and authored reveal motion."
+      },
+      {
+        "name": "fast",
+        "value": "160ms",
+        "purpose": "Buttons, fields, navigation color and border changes."
+      },
+      {
+        "name": "medium",
+        "value": "200ms",
+        "purpose": "Navigation underline and hover transforms."
+      },
+      {
+        "name": "reveal",
+        "value": "500ms",
+        "purpose": "Scroll reveal opacity and translate."
+      },
+      {
+        "name": "diagram",
+        "value": "1600ms",
+        "purpose": "System-map line drawing; collapses under reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one main action on a screen: graphite ground, mono uppercase label, cobalt hover.",
+      "html": "<button class=\"ds-btn-primary\" type=\"button\">Buka log project <span aria-hidden=\"true\">↓</span></button>",
+      "css": ".ds-btn-primary {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 0.5rem;\n  border: 1px solid var(--color-ink);\n  background: var(--color-ink);\n  color: var(--color-paper-raised);\n  padding: 0.72rem 1rem;\n  font-family: var(--font-mono);\n  font-size: 0.6875rem;\n  font-weight: 500;\n  letter-spacing: 0.1em;\n  line-height: 1;\n  text-transform: uppercase;\n  cursor: pointer;\n  transition: background-color 160ms ease-out, border-color 160ms ease-out, color 160ms ease-out, transform 160ms ease-out;\n}\n.ds-btn-primary:hover {\n  background: var(--color-cobalt);\n  border-color: var(--color-cobalt);\n}\n.ds-btn-primary:focus-visible {\n  outline: 2px solid var(--color-cobalt);\n  outline-offset: 3px;\n}\n.ds-btn-primary:active {\n  transform: translateY(1px);\n}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A quiet bordered action for alternatives beside the primary button.",
+      "html": "<button class=\"ds-btn-secondary\" type=\"button\">Mulai percakapan</button>",
+      "css": ".ds-btn-secondary {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 0.5rem;\n  border: 1px solid var(--color-line-strong);\n  background: transparent;\n  color: var(--color-ink);\n  padding: 0.72rem 1rem;\n  font-family: var(--font-mono);\n  font-size: 0.6875rem;\n  font-weight: 500;\n  letter-spacing: 0.1em;\n  line-height: 1;\n  text-transform: uppercase;\n  cursor: pointer;\n  transition: background-color 160ms ease-out, border-color 160ms ease-out, color 160ms ease-out, transform 160ms ease-out;\n}\n.ds-btn-secondary:hover {\n  border-color: var(--color-ink);\n  background: var(--color-paper-raised);\n}\n.ds-btn-secondary:focus-visible {\n  outline: 2px solid var(--color-cobalt);\n  outline-offset: 3px;\n}\n.ds-btn-secondary:active {\n  transform: translateY(1px);\n}"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Destructive action: transparent ground, stamp-red text, filled on hover.",
+      "html": "<button class=\"ds-btn-danger\" type=\"button\">Hapus project</button>",
+      "css": ".ds-btn-danger {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  gap: 0.5rem;\n  border: 1px solid color-mix(in srgb, var(--color-stamp) 45%, transparent);\n  background: transparent;\n  color: var(--color-stamp);\n  padding: 0.72rem 1rem;\n  font-family: var(--font-mono);\n  font-size: 0.6875rem;\n  font-weight: 500;\n  letter-spacing: 0.1em;\n  line-height: 1;\n  text-transform: uppercase;\n  cursor: pointer;\n  transition: background-color 160ms ease-out, border-color 160ms ease-out, color 160ms ease-out, transform 160ms ease-out;\n}\n.ds-btn-danger:hover {\n  background: var(--color-stamp);\n  border-color: var(--color-stamp);\n  color: var(--color-paper-raised);\n}\n.ds-btn-danger:focus-visible {\n  outline: 2px solid var(--color-cobalt);\n  outline-offset: 3px;\n}\n.ds-btn-danger:active {\n  transform: translateY(1px);\n}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "field",
+      "description": "A ruled paper field with a 4px radius and a cobalt focus ring.",
+      "html": "<label class=\"ds-field-label\" for=\"ds-field\">Subjek <span aria-hidden=\"true\">*</span></label><input class=\"ds-field\" id=\"ds-field\" type=\"text\" placeholder=\"Contoh: Perbaikan alur admin Laravel\"><p class=\"ds-field-help\">Minimal 20 karakter.</p>",
+      "css": ".ds-field-label {\n  display: block;\n  margin-bottom: 0.4rem;\n  font-family: var(--font-mono);\n  font-size: 0.6875rem;\n  font-weight: 500;\n  letter-spacing: 0.1em;\n  text-transform: uppercase;\n  color: var(--color-ink-soft);\n}\n.ds-field {\n  width: 100%;\n  border: 1px solid var(--color-line-strong);\n  border-radius: var(--radius-sm);\n  background: var(--color-paper-raised);\n  padding: 0.7rem 0.8rem;\n  color: var(--color-ink);\n  font-family: var(--font-sans);\n  font-size: 0.9375rem;\n  line-height: 1.5;\n  transition: border-color 160ms ease-out, box-shadow 160ms ease-out;\n}\n.ds-field::placeholder {\n  color: var(--color-ink-faint);\n}\n.ds-field:focus {\n  border-color: var(--color-cobalt);\n  box-shadow: 0 0 0 3px rgb(31 78 216 / 0.12);\n  outline: none;\n}\n.ds-field-help {\n  margin-top: 0.35rem;\n  font-size: 0.8125rem;\n  color: var(--color-ink-faint);\n}"
+    },
+    {
+      "name": "Navigation Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "A quiet navigation link whose 1px cobalt underline scales from the left on hover and active state.",
+      "html": "<a class=\"ds-nav-link\" href=\"#\" aria-current=\"page\">Project</a>",
+      "css": ".ds-nav-link {\n  position: relative;\n  display: inline-flex;\n  align-items: center;\n  padding-block: 0.25rem;\n  font-family: var(--font-sans);\n  font-size: 0.875rem;\n  color: var(--color-ink-soft);\n  text-decoration: none;\n  transition: color 160ms ease-out;\n}\n.ds-nav-link::after {\n  content: '';\n  position: absolute;\n  right: 0;\n  bottom: 0;\n  left: 0;\n  height: 1px;\n  background: var(--color-cobalt);\n  transform: scaleX(0);\n  transform-origin: left;\n  transition: transform 200ms ease-out;\n}\n.ds-nav-link:hover,\n.ds-nav-link[aria-current='page'] {\n  color: var(--color-ink);\n}\n.ds-nav-link:hover::after,\n.ds-nav-link[aria-current='page']::after {\n  transform: scaleX(1);\n}\n.ds-nav-link:focus-visible {\n  outline: 2px solid var(--color-cobalt);\n  outline-offset: 3px;\n}"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "filter-chip",
+      "description": "A rectangular mono filter control; selected state fills with graphite.",
+      "html": "<button class=\"ds-filter-chip\" type=\"button\" aria-pressed=\"true\">Web App</button>",
+      "css": ".ds-filter-chip {\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  border: 1px solid var(--color-line-strong);\n  background: transparent;\n  padding: 0.5rem 0.7rem;\n  font-family: var(--font-mono);\n  font-size: 0.625rem;\n  font-weight: 500;\n  letter-spacing: 0.12em;\n  line-height: 1;\n  text-transform: uppercase;\n  color: var(--color-ink-soft);\n  cursor: pointer;\n  transition: background-color 160ms ease-out, border-color 160ms ease-out, color 160ms ease-out;\n}\n.ds-filter-chip:hover {\n  border-color: var(--color-ink);\n  color: var(--color-ink);\n}\n.ds-filter-chip[aria-pressed='true'] {\n  border-color: var(--color-ink);\n  background: var(--color-ink);\n  color: var(--color-paper-raised);\n}\n.ds-filter-chip:focus-visible {\n  outline: 2px solid var(--color-cobalt);\n  outline-offset: 3px;\n}"
+    },
+    {
+      "name": "Status Stamp",
+      "kind": "custom",
+      "refersTo": "stamp",
+      "description": "A small bordered mono label for category, placeholder, error, and featured states.",
+      "html": "<span class=\"ds-stamp ds-stamp-cobalt\">Build log / 001</span>",
+      "css": ".ds-stamp {\n  display: inline-flex;\n  align-items: center;\n  gap: 0.4rem;\n  border: 1px solid currentColor;\n  padding: 0.28rem 0.5rem;\n  font-family: var(--font-mono);\n  font-size: 0.625rem;\n  font-weight: 500;\n  letter-spacing: 0.12em;\n  line-height: 1;\n  text-transform: uppercase;\n  box-shadow: 0 1px 0 rgb(21 24 27 / 0.08);\n}\n.ds-stamp-cobalt {\n  color: var(--color-cobalt);\n  background: var(--color-cobalt-wash);\n}\n.ds-stamp-manila {\n  color: var(--color-manila-ink);\n  background: var(--color-manila);\n  border-color: var(--color-manila-deep);\n}\n.ds-stamp-stamp {\n  color: var(--color-stamp);\n  background: var(--color-stamp-wash);\n}\n.ds-stamp-success {\n  color: var(--color-success);\n  background: var(--color-success-wash);\n}"
+    },
+    {
+      "name": "Ledger Row",
+      "kind": "card",
+      "refersTo": "ledger-row",
+      "description": "The project index primitive: entry number, stamps, display title, summary, stack metadata, and a technical plate.",
+      "html": "<article class=\"ds-ledger-row\"><div class=\"ds-ledger-index\">01<span>2026</span></div><div class=\"ds-ledger-body\"><div class=\"ds-ledger-tags\"><span class=\"ds-ledger-tag\">Web App</span><span class=\"ds-ledger-tag ds-ledger-tag-manila\">Contoh</span></div><h3 class=\"ds-ledger-title\"><a href=\"#\">Contoh — Sistem Manajemen Konten</a></h3><p class=\"ds-ledger-summary\">Project contoh untuk memperlihatkan bagaimana sebuah studi kasus disusun: masalah, pendekatan, dan keputusan teknis.</p><div class=\"ds-ledger-meta\">Laravel <span>/</span> MySQL <span>/</span> Blade</div><a class=\"ds-ledger-link\" href=\"#\">Baca entri <span aria-hidden=\"true\">→</span></a></div><div class=\"ds-ledger-plate\" aria-hidden=\"true\"><span>Plate 01</span></div></article>",
+      "css": ".ds-ledger-row {\n  display: grid;\n  grid-template-columns: 2.5rem minmax(0, 1.6fr) minmax(10rem, 1fr);\n  gap: 1rem 1.5rem;\n  align-items: start;\n  border-bottom: 1px solid var(--color-line);\n  padding-block: 1.1rem;\n  font-family: var(--font-sans);\n  color: var(--color-ink);\n}\n.ds-ledger-index {\n  font-family: var(--font-mono);\n  font-size: 0.6875rem;\n  letter-spacing: 0.16em;\n  color: var(--color-cobalt);\n}\n.ds-ledger-index span {\n  display: block;\n  margin-top: 0.5rem;\n  font-size: 0.5625rem;\n  letter-spacing: 0.14em;\n  text-transform: uppercase;\n  color: var(--color-ink-faint);\n}\n.ds-ledger-tags {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 0.5rem;\n}\n.ds-ledger-tag {\n  display: inline-flex;\n  border: 1px solid var(--color-cobalt);\n  background: var(--color-cobalt-wash);\n  padding: 0.28rem 0.5rem;\n  font-family: var(--font-mono);\n  font-size: 0.625rem;\n  font-weight: 500;\n  letter-spacing: 0.12em;\n  line-height: 1;\n  text-transform: uppercase;\n  color: var(--color-cobalt);\n}\n.ds-ledger-tag-manila {\n  border-color: var(--color-manila-deep);\n  background: var(--color-manila);\n  color: var(--color-manila-ink);\n}\n.ds-ledger-title {\n  margin: 0.75rem 0 0;\n  font-family: var(--font-display);\n  font-size: clamp(1.7rem, 3vw, 2.6rem);\n  font-weight: 600;\n  line-height: 0.94;\n  letter-spacing: -0.04em;\n}\n.ds-ledger-title a {\n  color: inherit;\n  text-decoration: none;\n}\n.ds-ledger-title a:hover {\n  color: var(--color-cobalt);\n}\n.ds-ledger-summary {\n  margin: 0.75rem 0 0;\n  max-width: 42rem;\n  font-size: 0.875rem;\n  line-height: 1.75;\n  color: var(--color-ink-soft);\n}\n.ds-ledger-meta {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 0.75rem;\n  margin-top: 1rem;\n  font-family: var(--font-mono);\n  font-size: 0.5625rem;\n  letter-spacing: 0.12em;\n  text-transform: uppercase;\n  color: var(--color-ink-faint);\n}\n.ds-ledger-link {\n  display: inline-flex;\n  gap: 0.5rem;\n  margin-top: 1.25rem;\n  font-family: var(--font-mono);\n  font-size: 0.625rem;\n  letter-spacing: 0.14em;\n  text-transform: uppercase;\n  color: var(--color-ink);\n  text-decoration: none;\n}\n.ds-ledger-link:hover {\n  color: var(--color-cobalt);\n}\n.ds-ledger-plate {\n  position: relative;\n  min-height: 8rem;\n  overflow: hidden;\n  border: 1px solid var(--color-line);\n  background: var(--color-paper-deep);\n}\n.ds-ledger-plate::after {\n  content: '';\n  position: absolute;\n  inset: 0;\n  background-image: linear-gradient(to right, rgb(21 24 27 / 0.035) 1px, transparent 1px), linear-gradient(to bottom, rgb(21 24 27 / 0.035) 1px, transparent 1px);\n  background-size: 18px 18px;\n}\n.ds-ledger-plate span {\n  position: absolute;\n  top: 0.75rem;\n  left: 0.75rem;\n  z-index: 1;\n  border: 1px solid var(--color-line-strong);\n  background: var(--color-paper-raised);\n  padding: 0.25rem 0.5rem;\n  font-family: var(--font-mono);\n  font-size: 0.5625rem;\n  letter-spacing: 0.14em;\n  text-transform: uppercase;\n  color: var(--color-ink-soft);\n}"
+    },
+    {
+      "name": "Raised Sheet",
+      "kind": "card",
+      "refersTo": "sheet",
+      "description": "A paper-lift panel with a deep-paper header and a flat bordered body; one per section.",
+      "html": "<div class=\"ds-sheet\"><div class=\"ds-sheet-header\"><p>Lembar data</p><h3>Profil publik</h3></div><div class=\"ds-sheet-body\">Identitas yang tampil di situs, tautan publik, dan file CV yang bisa diunduh.</div></div>",
+      "css": ".ds-sheet {\n  background: var(--color-paper-raised);\n  border: 1px solid var(--color-line);\n  box-shadow: 0 1px 0 rgb(21 24 27 / 0.06), 0 18px 40px -28px rgb(21 24 27 / 0.28);\n  color: var(--color-ink);\n  font-family: var(--font-sans);\n}\n.ds-sheet-header {\n  border-bottom: 1px solid var(--color-line);\n  background: var(--color-paper-deep);\n  padding: 0.75rem 1rem;\n}\n.ds-sheet-header p {\n  margin: 0;\n  font-family: var(--font-mono);\n  font-size: 0.5625rem;\n  letter-spacing: 0.14em;\n  text-transform: uppercase;\n  color: var(--color-ink-faint);\n}\n.ds-sheet-header h3 {\n  margin: 0.25rem 0 0;\n  font-family: var(--font-display);\n  font-size: 1.5rem;\n  font-weight: 600;\n  letter-spacing: -0.03em;\n  line-height: 1.1;\n}\n.ds-sheet-body {\n  padding: 1rem;\n  font-size: 0.9375rem;\n  line-height: 1.75;\n  color: var(--color-ink-soft);\n}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Build Log",
+    "overview": "This is a developer portfolio presented as a working field notebook: a ruled sheet on a cool paper ground, with graphite text, cobalt annotations, manila index tabs, and stamped statuses. The system is editorial rather than decorative. Its density comes from useful metadata — dates, categories, stack names, plate numbers, page counts — while the reading areas stay open and calm. The page should feel like a document someone actually maintains, not a marketing template dressed as one.\n\nThe world refuses the category defaults: no centered hero, no badge row, no equal-card project grid, and no rounded SaaS panels. Work is organized as ledger entries with rules between them, and technical drawings are treated as first-class content. Cobalt is the annotation ink: it marks links, active states, index numbers, and the one action that matters on a screen. It is never a large background wash.\n\nThe material palette is warm and low-chroma, with soft paper-lift shadows reserved for raised sheets and hover states. Thin warm-gray rules do most of the structural work. Typography pairs a characterful grotesk display with a readable sans and a mono face reserved for metadata, measurements, and code. Placeholder content is visibly provisional and never dressed as a real client outcome.",
+    "keyCharacteristics": [
+      "Cool paper ground with a faint drafting grid on section headers and technical plates.",
+      "Graphite ink for reading, cobalt for annotation and interaction, manila for index tabs.",
+      "Ledger rows and ruled sheets instead of card grids and rounded panels.",
+      "A 3/9 editorial split with a sticky left margin for section index and context.",
+      "Mono metadata at small sizes, with generous space around display type.",
+      "Soft, offset paper-lift shadows; 1px warm rules are the default separator."
+    ],
+    "rules": [
+      {
+        "name": "The Annotation Rule",
+        "body": "Cobalt is ink, not paint. It appears on links, active states, index numbers, focus rings, and one primary action per screen; it does not fill large sections or become a decorative gradient.",
+        "section": "colors"
+      },
+      {
+        "name": "The Paper Rule",
+        "body": "No pure white and no pure black. Grounds are warm paper, raised surfaces are lighter paper, and reading text is graphite. If a surface needs separation, add a 1px warm rule before adding a shadow.",
+        "section": "colors"
+      },
+      {
+        "name": "The Stamp Rule",
+        "body": "Status colors are for stamps, inline validation, and small state markers. A red or green surface never becomes the background of a full section.",
+        "section": "colors"
+      },
+      {
+        "name": "The Mono-Is-Metadata Rule",
+        "body": "JetBrains Mono is reserved for code, dates, measurements, statuses, table headers, and short labels. It never sets a paragraph, a project summary, or a marketing sentence.",
+        "section": "typography"
+      },
+      {
+        "name": "The Tight Display Rule",
+        "body": "Display and headline tracking never goes looser than -0.025em, and display line-height stays at 0.94. If a heading needs more room, shorten the line or reduce the size; do not loosen the tracking.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two-Voice Rule",
+        "body": "The system has two reading voices: display for statements and Instrument Sans for explanation. Mono is the annotation layer. Do not introduce a third reading face.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ledger Rule",
+        "body": "Project work is presented as ruled rows with numbers, stamps, summaries, and plates. It is never an equal-card grid, and no project is promoted with a larger card unless it is a featured entry inside the ledger.",
+        "section": "layout"
+      },
+      {
+        "name": "The Margin-Note Rule",
+        "body": "Section index and context live in the left margin, not as a kicker above the heading. The heading starts the reading column; the margin explains where the reader is.",
+        "section": "layout"
+      },
+      {
+        "name": "The One-Screen Rule",
+        "body": "Every public screen has one obvious next action. Secondary actions are quieter buttons or text links; they do not compete with the primary action.",
+        "section": "layout"
+      },
+      {
+        "name": "The Paper-Lift Rule",
+        "body": "Shadows are soft, offset, and low-opacity. At rest, a surface is flat unless it is a sheet or a plate; hover may lift it by one step, never by a theatrical jump.",
+        "section": "elevation"
+      },
+      {
+        "name": "The One-Sheet Rule",
+        "body": "A section gets at most one raised sheet. Nested panels use sheet-flat with a 1px border and no shadow, so the hierarchy stays legible.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Ruled-Sheet Rule",
+        "body": "Every container is defined by a 1px warm rule, a paper fill, or both. If a container needs a border radius larger than 4px, it is probably the wrong component.",
+        "section": "shapes"
+      },
+      {
+        "name": "The Plate Rule",
+        "body": "Technical drawings are framed as plates: 1px border, paper-deep ground, plate number, category label, and a bottom metadata strip. They are content, not decoration.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do keep the page on Cool Paper and use Raised Paper only for sheets, fields, and plates.",
+      "Do use Annotation Cobalt for links, active states, index numbers, focus rings, and one primary action per screen.",
+      "Do set section context in the 3-column left margin and start the heading in the reading column.",
+      "Do use 1px warm rules as the default separator; reach for a shadow only when a sheet or plate needs lift.",
+      "Do set mono labels at 0.6875rem or smaller with 0.14em tracking, and keep paragraphs in Instrument Sans.",
+      "Do keep the drafting grid faint (4.5% ink) and use it on section headers and plates, not behind long-form body copy.",
+      "Do label placeholder projects with the “Contoh” stamp and keep their copy explicitly provisional.",
+      "Do honor prefers-reduced-motion by collapsing transitions and diagram animations to near-instant."
+    ],
+    "donts": [
+      "Don't use pure white or pure black; the palette is paper and graphite.",
+      "Don't turn the project index into an equal-card grid or a gallery of screenshots.",
+      "Don't put a kicker or eyebrow directly above a heading; use the left margin or a metadata strip instead.",
+      "Don't use a colored left border thicker than 1px on cards, callouts, alerts, or list items.",
+      "Don't fill large sections with cobalt, stamp red, or success green; those are annotation and status inks.",
+      "Don't use rounded SaaS cards, pills, or radii above 4px for standard containers.",
+      "Don't use mono for paragraphs, project summaries, or marketing copy.",
+      "Don't invent clients, metrics, testimonials, or outcomes for placeholder projects."
+    ]
+  }
+}
