@@ -24,7 +24,7 @@ class SiteProfileController extends Controller
     public function update(UpdateSiteProfileRequest $request): RedirectResponse
     {
         $profile = $this->profile();
-        $data = $request->safe()->except(['cv', 'logo']);
+        $data = $request->safe()->except(['cv', 'logo', 'photo']);
         $oldPaths = [];
         $logoFile = null;
         $logoPath = null;
@@ -45,6 +45,15 @@ class SiteProfileController extends Controller
             $data['logo_original_name'] = $logoFile->getClientOriginalName();
             $oldPaths[] = $profile->logo_path;
             $oldPaths[] = $profile->faviconPath();
+        }
+
+        if ($request->hasFile('photo')) {
+            $photoFile = $request->file('photo');
+            $photoPath = $photoFile->store('profile/photo', 'public');
+
+            $data['photo_path'] = $photoPath;
+            $data['photo_original_name'] = $photoFile->getClientOriginalName();
+            $oldPaths[] = $profile->photo_path;
         }
 
         $profile->update($data);
@@ -91,6 +100,22 @@ class SiteProfileController extends Controller
         ]);
 
         return back()->with('success', 'Logo situs berhasil dihapus.');
+    }
+
+    public function destroyPhoto(): RedirectResponse
+    {
+        $profile = $this->profile();
+
+        if ($profile->photo_path) {
+            Storage::disk('public')->delete($profile->photo_path);
+        }
+
+        $profile->update([
+            'photo_path' => null,
+            'photo_original_name' => null,
+        ]);
+
+        return back()->with('success', 'Foto profil berhasil dihapus.');
     }
 
     private function storeFavicon(UploadedFile $file, string $logoPath): void

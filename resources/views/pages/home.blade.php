@@ -74,8 +74,8 @@
         </div>
 
         <div class="border-line py-10 lg:col-span-5 lg:py-16 lg:pl-10 xl:pl-14">
-          <div class="lg:sticky lg:top-28">
-            <x-system-map />
+          <div>
+            <x-profile-photo :profile="$profile" />
 
             <div class="mt-8 border-t border-cobalt pt-4">
               <p class="font-mono text-[9px] uppercase tracking-[0.14em] text-cobalt">Catatan lapangan</p>
@@ -163,6 +163,8 @@
               </div>
             @endforeach
           </div>
+
+          <x-system-map class="mt-12 max-w-4xl" />
         </div>
       </div>
     </div>

@@ -17,6 +17,7 @@ test('admin can view the profile settings page', function () {
         ->get(route('admin.profile.edit'))
         ->assertOk()
         ->assertSee('Profil publik & CV')
+        ->assertSee('Foto profil')
         ->assertSee('Logo situs');
 });
 
@@ -201,6 +202,128 @@ test('site logo validation rejects svg uploads', function () {
         ])
         ->assertSessionHasErrors([
             'logo' => 'Logo harus berupa gambar berformat JPEG, JPG, PNG, atau WebP.',
+        ], null, 'updateProfile');
+});
+
+test('admin profile shows the current photo and delete control', function () {
+    $this->profile->update([
+        'photo_path' => 'profile/photo/current-photo.jpg',
+        'photo_original_name' => 'current-photo.jpg',
+    ]);
+    Storage::disk('public')->put($this->profile->photo_path, 'photo');
+
+    $this->actingAs($this->admin)
+        ->get(route('admin.profile.edit'))
+        ->assertOk()
+        ->assertSee($this->profile->photo_url)
+        ->assertSee('current-photo.jpg')
+        ->assertSee('Hapus foto');
+});
+
+test('admin can upload a profile photo in an allowed format', function (string $name) {
+    $photo = UploadedFile::fake()->image($name, 800, 1000);
+
+    $this->actingAs($this->admin)
+        ->patch(route('admin.profile.update'), [
+            'profile' => [
+                'name' => 'Fikri Amrullah',
+                'role' => 'Laravel Developer',
+                'location' => 'Garut, Indonesia',
+                'email' => 'fikri@example.com',
+                'github_url' => 'https://github.com/massiki',
+                'linkedin_url' => '',
+            ],
+            'photo' => $photo,
+        ])
+        ->assertRedirect()
+        ->assertSessionHasNoErrors();
+
+    $this->profile->refresh();
+
+    expect($this->profile->photo_path)->not->toBeNull()
+        ->and($this->profile->photo_original_name)->toBe($name)
+        ->and($this->profile->hasPhoto())->toBeTrue();
+
+    Storage::disk('public')->assertExists($this->profile->photo_path);
+})->with([
+    'jpg' => 'photo.jpg',
+    'jpeg' => 'photo.jpeg',
+    'png' => 'photo.png',
+    'webp' => 'photo.webp',
+]);
+
+test('admin can replace the profile photo and the old file is deleted', function () {
+    $this->profile->update([
+        'photo_path' => 'profile/photo/old-photo.jpg',
+        'photo_original_name' => 'old-photo.jpg',
+    ]);
+
+    Storage::disk('public')->put($this->profile->photo_path, 'old');
+
+    $photo = UploadedFile::fake()->image('new-photo.jpg', 800, 1000);
+
+    $this->actingAs($this->admin)
+        ->patch(route('admin.profile.update'), [
+            'profile' => [
+                'name' => 'Fikri Amrullah',
+                'role' => 'Laravel Developer',
+                'location' => 'Garut, Indonesia',
+                'email' => 'fikri@example.com',
+                'github_url' => 'https://github.com/massiki',
+                'linkedin_url' => '',
+            ],
+            'photo' => $photo,
+        ])
+        ->assertRedirect()
+        ->assertSessionHasNoErrors();
+
+    $this->profile->refresh();
+
+    expect($this->profile->photo_path)->not->toBe('profile/photo/old-photo.jpg')
+        ->and($this->profile->photo_original_name)->toBe('new-photo.jpg');
+
+    Storage::disk('public')->assertMissing('profile/photo/old-photo.jpg');
+    Storage::disk('public')->assertExists($this->profile->photo_path);
+});
+
+test('admin can delete the profile photo', function () {
+    $this->profile->update([
+        'photo_path' => 'profile/photo/current-photo.jpg',
+        'photo_original_name' => 'current-photo.jpg',
+    ]);
+
+    Storage::disk('public')->put($this->profile->photo_path, 'photo');
+
+    $this->actingAs($this->admin)
+        ->delete(route('admin.profile.photo.destroy'))
+        ->assertRedirect();
+
+    $this->profile->refresh();
+
+    expect($this->profile->photo_path)->toBeNull()
+        ->and($this->profile->photo_original_name)->toBeNull()
+        ->and($this->profile->hasPhoto())->toBeFalse();
+
+    Storage::disk('public')->assertMissing('profile/photo/current-photo.jpg');
+});
+
+test('profile photo validation rejects svg uploads', function () {
+    $photo = UploadedFile::fake()->create('photo.svg', 10, 'image/svg+xml');
+
+    $this->actingAs($this->admin)
+        ->patch(route('admin.profile.update'), [
+            'profile' => [
+                'name' => 'Fikri Amrullah',
+                'role' => 'Laravel Developer',
+                'location' => 'Garut, Indonesia',
+                'email' => 'fikri@example.com',
+                'github_url' => 'https://github.com/massiki',
+                'linkedin_url' => '',
+            ],
+            'photo' => $photo,
+        ])
+        ->assertSessionHasErrors([
+            'photo' => 'Foto profil harus berupa gambar berformat JPEG, JPG, PNG, atau WebP.',
         ], null, 'updateProfile');
 });
 

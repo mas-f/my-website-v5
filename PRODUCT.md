@@ -27,7 +27,7 @@ The portfolio is both the proof and the product: every public project is managed
 ## Operating Context
 
 - Public pages: home, about, skills, projects, project detail, services, contact.
-- Admin area under `/admin`: dashboard, project CRUD, message management, public profile and CV management.
+- Admin area under `/admin`: dashboard, project CRUD, message management, public profile, profile photo, and CV management.
 - Content language is Indonesian; technical terms may remain in English.
 - Projects are stored in MySQL and published or drafted from the admin.
 - Contact messages are stored before any email notification is attempted.
@@ -41,6 +41,7 @@ The portfolio is both the proof and the product: every public project is managed
 - No public admin registration. The first admin is created through a secure Artisan command.
 - Only published projects are visible publicly; drafts must return 404 even with a known slug.
 - CV upload accepts a document file and is managed from the admin profile.
+- Profile photo upload accepts JPEG, JPG, PNG, or WebP up to 2 MB and is managed from the admin profile; SVG is not accepted. The home hero displays it as a 4:5 portrait plate with CSS `object-fit: cover`; no server-side crop or resize is performed. A provisional placeholder appears until a photo is uploaded.
 - Site logo upload accepts JPEG, JPG, PNG, or WebP and is managed from the admin profile; the public header falls back to the FA monogram when no logo is set. Each upload also generates a 64×64 PNG favicon for the browser tab, with `public/favicon.svg` as the fallback when no logo exists.
 - Images use Laravel Storage and the public disk; uploads are validated.
 - SEO basics: metadata, Open Graph, canonical URL, sitemap, robots.
@@ -62,7 +63,7 @@ The portfolio is both the proof and the product: every public project is managed
 
 - Real identity and GitHub URL.
 - No real project content yet. Four clearly labelled placeholder projects may be seeded locally and replaced through the admin.
-- No CV file, LinkedIn URL, profile photograph, or project thumbnails yet.
+- No CV file, LinkedIn URL, uploaded profile photograph, or project thumbnails yet. The home hero shows a provisional portrait placeholder until a photo is uploaded.
 - The design reference is https://dennamandela.vercel.app; use its editorial discipline and numbered narrative structure as inspiration, not as content or a template to copy.
 
 ## Product Principles

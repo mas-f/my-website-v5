@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Storage;
     'cv_original_name',
     'logo_path',
     'logo_original_name',
+    'photo_path',
+    'photo_original_name',
 ])]
 class SiteProfile extends Model
 {
@@ -40,6 +42,17 @@ class SiteProfile extends Model
                 ? Storage::disk('public')->url($this->logo_path)
                 : null,
         );
+    }
+
+    protected function photoUrl(): Attribute
+    {
+        return Attribute::get(function (): ?string {
+            if (! $this->hasPhoto()) {
+                return null;
+            }
+
+            return Storage::disk('public')->url($this->photo_path);
+        });
     }
 
     protected function faviconUrl(): Attribute
@@ -84,6 +97,11 @@ class SiteProfile extends Model
     public function hasLogo(): bool
     {
         return filled($this->logo_path);
+    }
+
+    public function hasPhoto(): bool
+    {
+        return filled($this->photo_path) && Storage::disk('public')->exists($this->photo_path);
     }
 
     public function faviconPath(): ?string

@@ -33,6 +33,7 @@ class UpdateSiteProfileRequest extends FormRequest
             'linkedin_url' => ['nullable', 'url', 'max:2048'],
             'cv' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:5120'],
             'logo' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'],
+            'photo' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'],
         ];
     }
 
@@ -51,6 +52,9 @@ class UpdateSiteProfileRequest extends FormRequest
             'logo.image' => 'Logo harus berupa gambar berformat JPEG, JPG, PNG, atau WebP.',
             'logo.mimes' => 'Logo harus berformat JPEG, JPG, PNG, atau WebP.',
             'logo.max' => 'Ukuran logo maksimal 2 MB.',
+            'photo.image' => 'Foto profil harus berupa gambar berformat JPEG, JPG, PNG, atau WebP.',
+            'photo.mimes' => 'Foto profil harus berformat JPEG, JPG, PNG, atau WebP.',
+            'photo.max' => 'Ukuran foto profil maksimal 2 MB.',
         ];
     }
 }

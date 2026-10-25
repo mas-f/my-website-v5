@@ -108,6 +108,30 @@ test('site favicon uses the generated logo favicon when available', function () 
         ->assertSee('type="image/png"', false);
 });
 
+test('home shows the profile photo when it is uploaded', function () {
+    Storage::fake('public');
+
+    $profile = SiteProfile::current();
+    $profile->update([
+        'photo_path' => 'profile/photo/fikri.jpg',
+        'photo_original_name' => 'fikri.jpg',
+    ]);
+    Storage::disk('public')->put($profile->photo_path, 'photo');
+
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee($profile->photo_url)
+        ->assertSee('Foto '.$profile->name)
+        ->assertDontSee('Foto belum diunggah');
+});
+
+test('home shows a photo placeholder when no profile photo is uploaded', function () {
+    $this->get(route('home'))
+        ->assertOk()
+        ->assertSee('Foto belum diunggah')
+        ->assertSee('System map / request path');
+});
+
 test('linkedin link is hidden when no linkedin url is set', function () {
     $this->get(route('home'))
         ->assertOk()

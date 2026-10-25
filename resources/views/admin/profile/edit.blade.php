@@ -4,7 +4,7 @@
 
 @section('content')
   <x-admin.page-header eyebrow="04 / Profil & CV" title="Profil publik & CV"
-    description="Identitas yang tampil di situs, tautan publik, dan file CV yang bisa diunduh.">
+    description="Identitas, foto profil, logo situs, tautan publik, dan file CV yang bisa diunduh.">
     <x-slot:actions>
       <a href="{{ route('home') }}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Lihat situs ↗</a>
     </x-slot:actions>
@@ -87,6 +87,38 @@
           </div>
 
           <div class="border-t border-line pt-5">
+            <label for="photo" class="label">Foto profil</label>
+            <div class="mt-3 flex flex-col gap-4 sm:flex-row sm:items-start">
+              <div class="aspect-[4/5] w-28 shrink-0 overflow-hidden border border-line bg-paper-deep">
+                @if ($profile->hasPhoto())
+                  <img id="photo-preview" src="{{ $profile->photo_url }}" alt="Pratinjau foto profil"
+                    class="size-full object-cover object-center">
+                @else
+                  <img id="photo-preview" alt="Pratinjau foto profil" class="size-full object-cover object-center" hidden>
+                  <span class="grid size-full place-items-center bg-paper-deep font-mono text-[10px] uppercase tracking-[0.14em] text-ink-faint" data-preview-empty>Foto</span>
+                @endif
+              </div>
+              <div class="min-w-0 flex-1">
+                <input type="file" name="photo" id="photo" accept="image/jpeg,image/png,image/webp"
+                  class="field file:mr-3 file:border-0 file:bg-ink file:px-3 file:py-1.5 file:font-mono file:text-[9px] file:uppercase file:tracking-[0.12em] file:text-paper-raised"
+                  data-image-input="#photo-preview">
+                <p class="help">JPEG/JPG, PNG, atau WebP. Maks 2 MB. Gunakan foto potret 4:5 agar bingkai rapi.</p>
+                @if (! $profile->hasPhoto())
+                  <p class="help">Tanpa foto, beranda menampilkan placeholder.</p>
+                @endif
+                @if ($errors->updateProfile->has('photo'))
+                  <p class="error">{{ $errors->updateProfile->first('photo') }}</p>
+                @endif
+                @if ($profile->hasPhoto())
+                  <p class="mt-2 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">
+                    {{ $profile->photo_original_name ?: 'Foto saat ini' }}
+                  </p>
+                @endif
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-line pt-5">
             <label for="logo" class="label">Logo situs</label>
             <div class="mt-3 flex flex-col gap-4 sm:flex-row sm:items-start">
               <div class="grid size-20 shrink-0 place-items-center border border-line bg-paper-deep p-2">
@@ -149,6 +181,19 @@
           <button type="submit" class="btn btn-primary">Simpan profil</button>
         </div>
       </form>
+
+      @if ($profile->hasPhoto())
+        <form action="{{ route('admin.profile.photo.destroy') }}" method="POST" data-confirm-form="admin-confirm-dialog"
+          class="border border-stamp/30 bg-stamp-wash/40 p-4">
+          @csrf
+          @method('DELETE')
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <p class="max-w-xl text-sm leading-relaxed text-ink-soft">Hapus foto profil. Beranda akan menampilkan placeholder
+              sampai foto baru diunggah.</p>
+            <button type="submit" class="btn btn-danger">Hapus foto</button>
+          </div>
+        </form>
+      @endif
 
       @if ($profile->hasLogo())
         <form action="{{ route('admin.profile.logo.destroy') }}" method="POST" data-confirm-form="admin-confirm-dialog"
