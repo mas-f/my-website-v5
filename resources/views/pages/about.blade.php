@@ -1,0 +1,153 @@
+@extends('layouts.public')
+
+@section('title', 'Tentang — '.$profile->name)
+@section('description', 'Tentang Fikri Amrullah, full-stack developer di Garut yang berfokus pada aplikasi web Laravel dan antarmuka yang jelas.')
+@section('canonical', route('about'))
+
+@section('content')
+    <section class="paper-grid border-b border-line">
+        <div class="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
+            <div class="grid gap-8 lg:grid-cols-12">
+                <div class="lg:col-span-3">
+                    <p class="eyebrow">01 / Profil</p>
+                    <p class="mt-3 max-w-[22ch] text-sm leading-relaxed text-ink-soft">
+                        Konteks singkat tentang peran, cara kerja, dan hal yang sedang dipelajari.
+                    </p>
+                </div>
+                <div class="lg:col-span-9">
+                    <h1 class="display max-w-[17ch] text-[clamp(3rem,5.5vw,5.2rem)] text-ink">Membangun dengan struktur, bukan tebakan.</h1>
+                    <p class="mt-6 max-w-[62ch] text-lg leading-relaxed text-ink-soft">
+                        Saya {{ $profile->name }}, full-stack developer di {{ $profile->location }}. Saya membangun aplikasi web dengan Laravel, Blade, MySQL, dan Tailwind CSS.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="border-b border-line bg-paper-raised">
+        <div class="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
+            <div class="grid gap-12 lg:grid-cols-12">
+                <div class="lg:col-span-3">
+                    <div class="lg:sticky lg:top-28">
+                        <p class="eyebrow">Cara berpikir</p>
+                        <p class="mt-3 max-w-[22ch] text-sm leading-relaxed text-ink-soft">
+                            Tiga hal yang selalu saya cek sebelum menambah fitur.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-9">
+                    <div class="grid gap-12 lg:grid-cols-12">
+                        <div class="lg:col-span-7">
+                            <div class="prose-log">
+                                <p>
+                                    Saya lebih tertarik pada aplikasi yang bisa dipahami ulang enam bulan kemudian daripada demo yang terlihat mengesankan sekali. Itu berarti penamaan yang jelas, validasi yang tidak bisa dilewati, dan antarmuka yang menunjukkan keadaan sebenarnya.
+                                </p>
+                                <p>
+                                    Sebagian besar pekerjaan saya berada di sisi server: merancang tabel, menulis alur controller, menjaga otorisasi, dan memastikan data yang keluar sesuai dengan yang seharusnya. Di sisi antarmuka, saya memakai Blade dan Tailwind CSS agar halaman tetap ringan dan mudah dirawat.
+                                </p>
+                                <p>
+                                    Situs ini sendiri adalah bagian dari cara saya bekerja. Panel admin yang mengelola project, pesan, dan CV adalah aplikasi Laravel yang sebenarnya, bukan mockup. Jika sebuah fitur tidak bisa dipakai, saya lebih memilih menyembunyikannya daripada menampilkan tombol yang tidak melakukan apa-apa.
+                                </p>
+                            </div>
+
+                            <div class="mt-10 border-t border-ink pt-5">
+                                <h2 class="font-display text-2xl font-semibold tracking-[-0.03em] text-ink">Fokus saat ini</h2>
+                                <div class="mt-5 grid gap-4 sm:grid-cols-3">
+                                    @foreach ([
+                                        ['Aplikasi Laravel', 'Alur server yang jelas dan bisa diuji.'],
+                                        ['Panel admin', 'Kontrol konten yang aman dan tidak menyulitkan.'],
+                                        ['Kualitas antarmuka', 'Hierarki, aksesibilitas, dan performa.'],
+                                    ] as [$title, $body])
+                                        <div class="border-t border-line pt-3">
+                                            <h3 class="text-sm font-semibold text-ink">{{ $title }}</h3>
+                                            <p class="mt-1 text-sm leading-relaxed text-ink-soft">{{ $body }}</p>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="lg:col-span-5">
+                            <div class="sheet-flat">
+                                <div class="flex items-center justify-between border-b border-line bg-paper-deep px-4 py-3">
+                                    <p class="font-mono text-[9px] uppercase tracking-[0.14em] text-ink-faint">Lembar data</p>
+                                    <span class="stamp stamp-cobalt">Profil</span>
+                                </div>
+                                <dl class="divide-y divide-line">
+                                    @foreach ([
+                                        ['Nama', $profile->name],
+                                        ['Peran', $profile->role],
+                                        ['Lokasi', $profile->location],
+                                        ['Email', $profile->email],
+                                        ['GitHub', $profile->github_url],
+                                    ] as [$label, $value])
+                                        <div class="px-4 py-3">
+                                            <dt class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">{{ $label }}</dt>
+                                            <dd class="mt-1 break-words text-sm text-ink">{{ $value }}</dd>
+                                        </div>
+                                    @endforeach
+                                </dl>
+                                <div class="border-t border-line px-4 py-3">
+                                    <p class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">CV</p>
+                                    @if ($profile->hasCv())
+                                        <a href="{{ $profile->cv_url }}" class="mt-1 inline-flex items-center gap-2 text-sm text-cobalt hover:underline" download>
+                                            Unduh CV
+                                            <span aria-hidden="true">↓</span>
+                                        </a>
+                                    @else
+                                        <p class="mt-1 text-sm text-ink-faint">Belum diunggah. Tautan akan muncul setelah file tersedia.</p>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="mt-6 border-t border-cobalt pt-4">
+                                <p class="font-mono text-[9px] uppercase tracking-[0.14em] text-cobalt">Catatan</p>
+                                <p class="mt-2 text-sm leading-relaxed text-ink-soft">
+                                    Tidak ada klaim pengalaman, klien, atau metrik yang tidak bisa diverifikasi di halaman ini.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="border-b border-line">
+        <div class="mx-auto max-w-[1440px] px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
+            <div class="grid gap-8 lg:grid-cols-12">
+                <div class="lg:col-span-3">
+                    <p class="eyebrow">Prinsip kerja</p>
+                </div>
+                <div class="lg:col-span-9">
+                    <div class="grid gap-8 sm:grid-cols-3">
+                        @foreach ([
+                            ['01', 'Jelas sebelum pintar', 'Struktur yang mudah dibaca lebih berharga daripada abstraksi yang belum dibutuhkan.'],
+                            ['02', 'Server yang menjaga', 'Validasi dan otorisasi tidak boleh bergantung pada tampilan atau niat pengguna.'],
+                            ['03', 'Kecil dan teruji', 'Perubahan kecil dengan alur utama yang diuji lebih mudah dirilis dan dipulihkan.'],
+                        ] as [$number, $title, $body])
+                            <div class="border-t border-ink pt-4">
+                                <p class="font-mono text-[10px] tracking-[0.14em] text-cobalt">{{ $number }}</p>
+                                <h2 class="mt-3 font-display text-xl font-semibold tracking-[-0.03em] text-ink">{{ $title }}</h2>
+                                <p class="mt-2 text-sm leading-relaxed text-ink-soft">{{ $body }}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-ink text-paper">
+        <div class="mx-auto flex max-w-[1440px] flex-col gap-6 px-5 py-14 sm:px-8 lg:flex-row lg:items-end lg:justify-between lg:px-12 lg:py-20">
+            <div>
+                <h2 class="display max-w-[18ch] text-[clamp(2.2rem,4vw,3.6rem)] text-paper">Lihat bagaimana saya bekerja.</h2>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <a href="{{ route('projects.index') }}" class="btn bg-paper-raised text-ink hover:bg-cobalt hover:text-paper-raised">Buka log project</a>
+                <a href="{{ route('contact.create') }}" class="btn border-paper/30 text-paper hover:border-paper hover:bg-paper hover:text-ink">Hubungi saya</a>
+            </div>
+        </div>
+    </section>
+@endsection
