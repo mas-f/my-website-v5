@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Storage;
     'linkedin_url',
     'cv_path',
     'cv_original_name',
+    'logo_path',
+    'logo_original_name',
 ])]
 class SiteProfile extends Model
 {
@@ -29,6 +31,38 @@ class SiteProfile extends Model
                 ? Storage::disk('public')->url($this->cv_path)
                 : null,
         );
+    }
+
+    protected function logoUrl(): Attribute
+    {
+        return Attribute::get(
+            fn (): ?string => $this->logo_path
+                ? Storage::disk('public')->url($this->logo_path)
+                : null,
+        );
+    }
+
+    protected function faviconUrl(): Attribute
+    {
+        return Attribute::get(function (): ?string {
+            if (! $this->logo_path) {
+                return null;
+            }
+
+            $faviconPath = $this->faviconPath();
+
+            return $faviconPath !== null && Storage::disk('public')->exists($faviconPath)
+                ? Storage::disk('public')->url($faviconPath)
+                : Storage::disk('public')->url($this->logo_path);
+        });
+    }
+
+    public static function faviconPathFor(string $logoPath): string
+    {
+        $directory = pathinfo($logoPath, PATHINFO_DIRNAME);
+        $filename = pathinfo($logoPath, PATHINFO_FILENAME);
+
+        return ($directory !== '.' ? $directory.'/' : '').$filename.'-favicon.png';
     }
 
     public static function current(): self
@@ -45,5 +79,22 @@ class SiteProfile extends Model
     public function hasCv(): bool
     {
         return filled($this->cv_path);
+    }
+
+    public function hasLogo(): bool
+    {
+        return filled($this->logo_path);
+    }
+
+    public function faviconPath(): ?string
+    {
+        return $this->logo_path ? static::faviconPathFor($this->logo_path) : null;
+    }
+
+    public function hasGeneratedFavicon(): bool
+    {
+        $faviconPath = $this->faviconPath();
+
+        return $faviconPath !== null && Storage::disk('public')->exists($faviconPath);
     }
 }

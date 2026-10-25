@@ -8,7 +8,11 @@
             <a href="{{ route('home') }}" class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-faint">
                 <span aria-hidden="true">←</span> Kembali ke situs
             </a>
-            <span class="grid size-8 place-items-center border border-ink bg-ink font-mono text-[10px] text-paper-raised">FA</span>
+            @if ($profile->hasLogo())
+                <img src="{{ $profile->logo_url }}" alt="" class="size-8 shrink-0 object-contain">
+            @else
+                <span class="grid size-8 place-items-center border border-ink bg-ink font-mono text-[10px] text-paper-raised">FA</span>
+            @endif
         </div>
 
         <div class="sheet">

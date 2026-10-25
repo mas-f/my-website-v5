@@ -345,6 +345,7 @@ Corners are not softened to signal friendliness. The system's warmth comes from 
 
 ### Navigation
 - **Style:** Sticky header with a top metadata strip and a second row for the wordmark, desktop nav, and actions. Nav links are 0.875rem Instrument Sans with a 1px cobalt underline that scales from the left on hover and `aria-current="page"`.
+- **Wordmark:** The uploaded site logo replaces the FA monogram when present. It sits directly on paper surfaces; on the dark auth panel it gets a raised-paper backing so the mark stays legible. The FA monogram remains the fallback. The browser tab icon follows the uploaded logo via a generated 64×64 PNG favicon, falling back to `public/favicon.svg` when no logo is set.
 - **Mobile:** The desktop nav and actions are hidden below `lg`; a bordered “Menu” button toggles a full-width disclosure panel. The panel uses the `hidden` class, not the HTML `hidden` attribute, so responsive utilities and the toggle can coexist.
 - **Admin:** A 250px sidebar at `lg`, sticky below the top bar, with active rows marked by a cobalt-wash fill, deep-cobalt text, and a 1px cobalt left rule. Below `lg` the same panel is a disclosure above the main content.
 

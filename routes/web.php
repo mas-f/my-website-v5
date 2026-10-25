@@ -57,6 +57,7 @@ Route::prefix('admin')->group(function () {
         Route::get('profile', [SiteProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('profile', [SiteProfileController::class, 'update'])->name('profile.update');
         Route::delete('profile/cv', [SiteProfileController::class, 'destroyCv'])->name('profile.cv.destroy');
+        Route::delete('profile/logo', [SiteProfileController::class, 'destroyLogo'])->name('profile.logo.destroy');
 
         Route::patch('account', [ProfileController::class, 'update'])->name('account.update');
         Route::put('account/password', [PasswordController::class, 'update'])->name('account.password.update');

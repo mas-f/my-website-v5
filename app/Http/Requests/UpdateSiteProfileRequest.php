@@ -32,6 +32,7 @@ class UpdateSiteProfileRequest extends FormRequest
             'github_url' => ['nullable', 'url', 'max:2048'],
             'linkedin_url' => ['nullable', 'url', 'max:2048'],
             'cv' => ['nullable', 'file', 'mimes:pdf,doc,docx', 'max:5120'],
+            'logo' => ['nullable', 'image', 'mimes:jpeg,jpg,png,webp', 'max:2048'],
         ];
     }
 
@@ -47,6 +48,9 @@ class UpdateSiteProfileRequest extends FormRequest
             'linkedin_url.url' => 'URL LinkedIn harus berupa alamat yang valid.',
             'cv.mimes' => 'CV harus berformat PDF, DOC, atau DOCX.',
             'cv.max' => 'Ukuran CV maksimal 5 MB.',
+            'logo.image' => 'Logo harus berupa gambar berformat JPEG, JPG, PNG, atau WebP.',
+            'logo.mimes' => 'Logo harus berformat JPEG, JPG, PNG, atau WebP.',
+            'logo.max' => 'Ukuran logo maksimal 2 MB.',
         ];
     }
 }

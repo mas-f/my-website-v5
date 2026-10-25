@@ -24,9 +24,13 @@
 
     <div class="mx-auto flex max-w-[1440px] items-center justify-between gap-6 px-5 py-4 sm:px-8 lg:px-12">
         <a href="{{ route('home') }}" class="group flex items-center gap-3" aria-label="{{ $profile->name }} — beranda">
-            <span class="grid size-9 place-items-center border border-ink bg-ink font-mono text-[11px] font-medium tracking-widest text-paper-raised transition-colors group-hover:border-cobalt group-hover:bg-cobalt">
-                FA
-            </span>
+            @if ($profile->hasLogo())
+                <img src="{{ $profile->logo_url }}" alt="" class="size-9 shrink-0 object-contain transition-opacity group-hover:opacity-80">
+            @else
+                <span class="grid size-9 place-items-center border border-ink bg-ink font-mono text-[11px] font-medium tracking-widest text-paper-raised transition-colors group-hover:border-cobalt group-hover:bg-cobalt">
+                    FA
+                </span>
+            @endif
             <span class="leading-none">
                 <span class="block font-display text-[1.05rem] font-semibold tracking-[-0.03em] text-ink">{{ $profile->name }}</span>
                 <span class="mt-1 block font-mono text-[9px] uppercase tracking-[0.18em] text-ink-faint">Full-stack developer</span>

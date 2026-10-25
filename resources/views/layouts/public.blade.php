@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    @php($site = $profile ?? \App\Models\SiteProfile::current())
+    @php
+        $site = $profile ?? \App\Models\SiteProfile::current();
+    @endphp
 
     <title>@yield('title', $site->name.' — '.$site->role)</title>
     <meta name="description" content="@yield('description', 'Portofolio Fikri Amrullah, full-stack developer yang membangun aplikasi web dengan Laravel, Blade, MySQL, dan Tailwind CSS.')">
@@ -24,7 +26,11 @@
     <meta name="twitter:description" content="@yield('description', 'Portofolio Fikri Amrullah, full-stack developer yang membangun aplikasi web dengan Laravel, Blade, MySQL, dan Tailwind CSS.')">
 
     <meta name="theme-color" content="#f5f3ec">
-    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+    @if ($site->favicon_url)
+        <link rel="icon" href="{{ $site->favicon_url }}" @if ($site->hasGeneratedFavicon()) type="image/png" sizes="64x64" @endif>
+    @else
+        <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+    @endif
 
     @fonts
     @vite(['resources/css/app.css', 'resources/js/app.js'])

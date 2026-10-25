@@ -18,6 +18,8 @@ class SiteProfileSeeder extends Seeder
             'linkedin_url' => null,
             'cv_path' => null,
             'cv_original_name' => null,
+            'logo_path' => null,
+            'logo_original_name' => null,
         ]);
     }
 }

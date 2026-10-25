@@ -1,3 +1,7 @@
+@php
+    $site = \App\Models\SiteProfile::current();
+@endphp
+
 <!DOCTYPE html>
 <html lang="id" class="scroll-smooth">
 <head>
@@ -7,7 +11,11 @@
     <title>@yield('title', 'Admin — '.config('app.name'))</title>
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#f5f3ec">
-    <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+    @if ($site->favicon_url)
+        <link rel="icon" href="{{ $site->favicon_url }}" @if ($site->hasGeneratedFavicon()) type="image/png" sizes="64x64" @endif>
+    @else
+        <link rel="icon" href="{{ asset('favicon.svg') }}" type="image/svg+xml">
+    @endif
     @fonts
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -45,9 +53,13 @@
                 </button>
 
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3">
-                    <span class="grid size-8 place-items-center border border-ink bg-ink font-mono text-[10px] tracking-widest text-paper-raised">FA</span>
+                    @if ($site->hasLogo())
+                        <img src="{{ $site->logo_url }}" alt="" class="size-8 shrink-0 object-contain">
+                    @else
+                        <span class="grid size-8 place-items-center border border-ink bg-ink font-mono text-[10px] tracking-widest text-paper-raised">FA</span>
+                    @endif
                     <span class="leading-none">
-                        <span class="block font-display text-sm font-semibold tracking-[-0.02em] text-ink">Fikri Amrullah</span>
+                        <span class="block font-display text-sm font-semibold tracking-[-0.02em] text-ink">{{ $site->name }}</span>
                         <span class="mt-1 block font-mono text-[9px] uppercase tracking-[0.14em] text-ink-faint">Panel admin</span>
                     </span>
                 </a>

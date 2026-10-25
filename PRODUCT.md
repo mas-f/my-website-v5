@@ -41,6 +41,7 @@ The portfolio is both the proof and the product: every public project is managed
 - No public admin registration. The first admin is created through a secure Artisan command.
 - Only published projects are visible publicly; drafts must return 404 even with a known slug.
 - CV upload accepts a document file and is managed from the admin profile.
+- Site logo upload accepts JPEG, JPG, PNG, or WebP and is managed from the admin profile; the public header falls back to the FA monogram when no logo is set. Each upload also generates a 64×64 PNG favicon for the browser tab, with `public/favicon.svg` as the fallback when no logo exists.
 - Images use Laravel Storage and the public disk; uploads are validated.
 - SEO basics: metadata, Open Graph, canonical URL, sitemap, robots.
 - Shared hosting constraints: no Node runtime, no long-running queue worker assumed, document root must resolve to `public/`.
