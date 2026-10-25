@@ -40,6 +40,18 @@ test('contact form stores a message and sends a notification', function () {
     });
 });
 
+test('contact form shows a success notification after submission', function () {
+    Mail::fake();
+
+    $this->followingRedirects()
+        ->post(route('contact.store'), validContactPayload())
+        ->assertOk()
+        ->assertSee('Terima kasih. Pesan Anda sudah tersimpan dan akan dibaca secepatnya.')
+        ->assertSee('role="status"', false);
+
+    expect(ContactMessage::query()->count())->toBe(1);
+});
+
 test('contact form validates required fields', function () {
     $this->post(route('contact.store'), [])
         ->assertSessionHasErrors(['name', 'email', 'subject', 'message']);

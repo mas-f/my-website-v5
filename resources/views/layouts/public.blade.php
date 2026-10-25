@@ -43,6 +43,8 @@
 
     <x-site-header :profile="$site" />
 
+    <x-flash />
+
     <main id="main">
         @yield('content')
     </main>
