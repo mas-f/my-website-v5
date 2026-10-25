@@ -2,6 +2,7 @@
 
 @php
     $nav = [
+        ['label' => 'Beranda', 'route' => 'home', 'pattern' => 'home'],
         ['label' => 'Tentang', 'route' => 'about', 'pattern' => 'about'],
         ['label' => 'Keahlian', 'route' => 'skills', 'pattern' => 'skills'],
         ['label' => 'Project', 'route' => 'projects.index', 'pattern' => 'projects.*'],
