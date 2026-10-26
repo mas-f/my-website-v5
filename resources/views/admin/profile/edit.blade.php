@@ -6,7 +6,7 @@
   <x-admin.page-header eyebrow="04 / Profil & CV" title="Profil publik & CV"
     description="Identitas, foto profil, logo situs, tautan publik, dan file CV yang bisa diunduh.">
     <x-slot:actions>
-      <a href="{{ route('home') }}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Lihat situs ↗</a>
+      <a href="{{ route('home') }}" class="btn btn-secondary cursor-pointer" target="_blank" rel="noopener noreferrer">Lihat situs ↗</a>
     </x-slot:actions>
   </x-admin.page-header>
 
@@ -164,7 +164,7 @@
                 class="mt-4 flex flex-col gap-3 border border-line bg-paper-deep p-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <p class="text-sm text-ink">{{ $profile->cv_original_name ?: 'CV saat ini' }}</p>
-                  <a href="{{ $profile->cv_url }}" class="mt-1 inline-flex text-xs text-cobalt hover:underline"
+                  <a href="{{ $profile->cv_url }}" class="mt-1 inline-flex text-xs text-cobalt hover:underline cursor-pointer"
                     target="_blank" rel="noopener noreferrer">Buka file ↗</a>
                 </div>
                 <span class="stamp stamp-success w-fit">Tersedia</span>
@@ -178,7 +178,7 @@
         </div>
 
         <div class="flex flex-wrap justify-end gap-2 border-t border-line px-4 py-4 sm:px-5">
-          <button type="submit" class="btn btn-primary">Simpan profil</button>
+          <button type="submit" class="btn btn-primary cursor-pointer">Simpan profil</button>
         </div>
       </form>
 
@@ -190,7 +190,7 @@
           <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p class="max-w-xl text-sm leading-relaxed text-ink-soft">Hapus foto profil. Beranda akan menampilkan placeholder
               sampai foto baru diunggah.</p>
-            <button type="submit" class="btn btn-danger">Hapus foto</button>
+            <button type="submit" class="btn btn-danger cursor-pointer">Hapus foto</button>
           </div>
         </form>
       @endif
@@ -203,7 +203,7 @@
           <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p class="max-w-xl text-sm leading-relaxed text-ink-soft">Hapus logo situs. Header akan kembali memakai
               monogram FA.</p>
-            <button type="submit" class="btn btn-danger">Hapus logo</button>
+            <button type="submit" class="btn btn-danger cursor-pointer">Hapus logo</button>
           </div>
         </form>
       @endif
@@ -216,7 +216,7 @@
           <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p class="max-w-xl text-sm leading-relaxed text-ink-soft">Hapus file CV. Tautan unduh akan langsung
               disembunyikan dari situs publik.</p>
-            <button type="submit" class="btn btn-danger">Hapus CV</button>
+            <button type="submit" class="btn btn-danger cursor-pointer">Hapus CV</button>
           </div>
         </form>
       @endif
@@ -248,7 +248,7 @@
           </div>
         </div>
         <div class="border-t border-line px-4 py-4">
-          <button type="submit" class="btn btn-secondary w-full">Simpan akun</button>
+          <button type="submit" class="btn btn-secondary w-full cursor-pointer">Simpan akun</button>
         </div>
       </form>
 
@@ -288,7 +288,7 @@
           </div>
         </div>
         <div class="border-t border-line px-4 py-4">
-          <button type="submit" class="btn btn-secondary w-full">Perbarui password</button>
+          <button type="submit" class="btn btn-secondary w-full cursor-pointer">Perbarui password</button>
         </div>
       </form>
 

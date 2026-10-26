@@ -23,7 +23,7 @@
     <div class="grid min-h-screen lg:grid-cols-2">
         <aside class="paper-grid relative hidden overflow-hidden border-r border-line bg-ink px-10 py-12 text-paper lg:flex lg:flex-col lg:justify-between xl:px-16">
             <div>
-                <a href="{{ route('home') }}" class="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.16em] text-paper/70 transition-colors hover:text-paper">
+                <a href="{{ route('home') }}" class="inline-flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.16em] text-paper/70 transition-colors hover:text-paper cursor-pointer">
                     @if ($site->hasLogo())
                         <span class="grid size-8 shrink-0 place-items-center bg-paper-raised p-0.5">
                             <img src="{{ $site->logo_url }}" alt="" class="size-full object-contain">

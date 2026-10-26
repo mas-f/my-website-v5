@@ -98,7 +98,7 @@
         </h2>
       </div>
       <a href="{{ route('contact.create') }}"
-        class="btn bg-paper-raised text-ink hover:bg-cobalt hover:text-paper-raised">Kirim pesan</a>
+        class="btn bg-paper-raised text-ink hover:bg-cobalt hover:text-paper-raised cursor-pointer">Kirim pesan</a>
     </div>
   </section>
 @endsection

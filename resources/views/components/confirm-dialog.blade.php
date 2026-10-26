@@ -9,9 +9,9 @@
         <p class="text-sm leading-relaxed text-ink-soft">{{ $message }}</p>
         <div class="mt-6 flex flex-wrap justify-end gap-2">
             <form method="dialog">
-                <button type="submit" class="btn btn-secondary">Batal</button>
+                <button type="submit" class="btn btn-secondary cursor-pointer">Batal</button>
             </form>
-            <button type="button" class="btn btn-danger" data-confirm-action>Ya, lanjutkan</button>
+            <button type="button" class="btn btn-danger cursor-pointer" data-confirm-action>Ya, lanjutkan</button>
         </div>
     </div>
 </dialog>

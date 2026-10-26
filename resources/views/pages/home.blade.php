@@ -52,13 +52,13 @@
           </p>
 
           <div class="mt-9 flex flex-wrap items-center gap-3">
-            <a href="#log" class="btn btn-primary">
+            <a href="#log" class="btn btn-primary cursor-pointer">
               Buka log project
               <span aria-hidden="true">↓</span>
             </a>
-            <a href="{{ route('contact.create') }}" class="btn btn-secondary">Mulai percakapan</a>
+            <a href="{{ route('contact.create') }}" class="btn btn-secondary cursor-pointer">Mulai percakapan</a>
             @if ($profile->hasCv())
-              <a href="{{ $profile->cv_url }}" class="btn btn-secondary" download>Unduh CV</a>
+              <a href="{{ $profile->cv_url }}" class="btn btn-secondary cursor-pointer" download>Unduh CV</a>
             @endif
           </div>
 
@@ -97,7 +97,7 @@
               Setiap proyek yang dikembangkan merupakan bukti nyata dari proses belajar melalui praktik langsung.
             </p>
             <a href="{{ route('projects.index') }}"
-              class="mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink transition-colors hover:border-cobalt hover:text-cobalt">
+              class="mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink transition-colors hover:border-cobalt hover:text-cobalt cursor-pointer">
               Lihat semua project
               <span aria-hidden="true">→</span>
             </a>
@@ -234,7 +234,7 @@
                 dibuat, melainkan juga fitur tersebut harus bisa digunakan oleh user dengan baik dan semaksimal mungkin.
               </p>
               <a href="{{ route('about') }}"
-                class="mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink transition-colors hover:border-cobalt hover:text-cobalt">
+                class="mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink transition-colors hover:border-cobalt hover:text-cobalt cursor-pointer">
                 Baca profil lengkap
                 <span aria-hidden="true">→</span>
               </a>
@@ -278,12 +278,12 @@
           </p>
           <div class="mt-6 flex flex-wrap gap-3">
             <a href="{{ route('contact.create') }}"
-              class="btn bg-paper-raised text-ink hover:bg-cobalt hover:text-paper-raised">
+              class="btn bg-paper-raised text-ink hover:bg-cobalt hover:text-paper-raised cursor-pointer">
               Kirim pesan
               <span aria-hidden="true">→</span>
             </a>
             <a href="mailto:{{ $profile->email }}"
-              class="btn border-paper/30 text-paper hover:border-paper hover:bg-paper hover:text-ink">
+              class="btn border-paper/30 text-paper hover:border-paper hover:bg-paper hover:text-ink cursor-pointer">
               Email langsung
             </a>
           </div>

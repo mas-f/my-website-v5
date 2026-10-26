@@ -5,7 +5,7 @@
 @section('content')
     <div class="w-full max-w-md">
         <div class="mb-8 flex items-center justify-between lg:hidden">
-            <a href="{{ route('home') }}" class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-faint">
+            <a href="{{ route('home') }}" class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-faint cursor-pointer">
                 <span aria-hidden="true">←</span> Kembali ke situs
             </a>
             @if ($profile->hasLogo())
@@ -67,7 +67,7 @@
                     Ingat perangkat ini
                 </label>
 
-                <button type="submit" class="btn btn-primary mt-6 w-full">
+                <button type="submit" class="btn btn-primary mt-6 w-full cursor-pointer">
                     Masuk ke panel
                     <span aria-hidden="true">→</span>
                 </button>

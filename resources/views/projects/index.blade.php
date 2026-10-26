@@ -37,11 +37,11 @@
           <div class="lg:sticky lg:top-28">
             <p class="eyebrow">Filter</p>
             <div class="mt-4 flex flex-wrap gap-2 lg:flex-col lg:items-start" data-project-filters>
-              <button type="button" data-filter="all" aria-pressed="true" class="filter-chip">
+              <button type="button" data-filter="all" aria-pressed="true" class="filter-chip cursor-pointer">
                 Semua
               </button>
               @foreach ($categories as $category)
-                <button type="button" data-filter="{{ $category }}" aria-pressed="false" class="filter-chip">
+                <button type="button" data-filter="{{ $category }}" aria-pressed="false" class="filter-chip cursor-pointer">
                   {{ $category }}
                 </button>
               @endforeach
@@ -79,7 +79,7 @@
       <p class="max-w-[48ch] text-sm leading-relaxed text-ink-soft">
         Ingin membahas pendekatan untuk project Anda sendiri?
       </p>
-      <a href="{{ route('contact.create') }}" class="btn btn-primary w-fit">
+      <a href="{{ route('contact.create') }}" class="btn btn-primary w-fit cursor-pointer">
         Mulai percakapan
         <span aria-hidden="true">→</span>
       </a>

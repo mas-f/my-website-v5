@@ -94,7 +94,7 @@
                   <p class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">CV</p>
                   @if ($profile->hasCv())
                     <a href="{{ $profile->cv_url }}"
-                      class="mt-1 inline-flex items-center gap-2 text-sm text-cobalt hover:underline" download>
+                      class="mt-1 inline-flex items-center gap-2 text-sm text-cobalt hover:underline cursor-pointer" download>
                       Unduh CV
                       <span aria-hidden="true">↓</span>
                     </a>
@@ -147,9 +147,9 @@
       </div>
       <div class="flex flex-wrap gap-3">
         <a href="{{ route('projects.index') }}"
-          class="btn bg-paper-raised text-ink hover:bg-cobalt hover:text-paper-raised">Buka log project</a>
+          class="btn bg-paper-raised text-ink hover:bg-cobalt hover:text-paper-raised cursor-pointer">Buka log project</a>
         <a href="{{ route('contact.create') }}"
-          class="btn border-paper/30 text-paper hover:border-paper hover:bg-paper hover:text-ink">Hubungi saya</a>
+          class="btn border-paper/30 text-paper hover:border-paper hover:bg-paper hover:text-ink cursor-pointer">Hubungi saya</a>
       </div>
     </div>
   </section>

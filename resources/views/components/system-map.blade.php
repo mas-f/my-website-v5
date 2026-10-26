@@ -7,7 +7,7 @@
             <p class="mt-1 font-mono text-[10px] tracking-[0.08em] text-ink-faint">Empat fase, satu putaran umpan balik.</p>
         </div>
         <button type="button"
-            class="font-mono text-[9px] uppercase tracking-[0.14em] text-cobalt transition-opacity hover:opacity-70"
+            class="font-mono text-[9px] uppercase tracking-[0.14em] text-cobalt transition-opacity hover:opacity-70 cursor-pointer"
             data-replay-diagram="#system-map">
             Ulangi alur ↻
         </button>

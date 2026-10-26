@@ -9,8 +9,8 @@
         description="Buat entri baru. Simpan sebagai draft jika belum siap tampil publik."
     >
         <x-slot:actions>
-            <button type="submit" form="project-form" class="btn btn-primary">Simpan project</button>
-            <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary">Batal</a>
+            <button type="submit" form="project-form" class="btn btn-primary cursor-pointer">Simpan project</button>
+            <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary cursor-pointer">Batal</a>
         </x-slot:actions>
     </x-admin.page-header>
 

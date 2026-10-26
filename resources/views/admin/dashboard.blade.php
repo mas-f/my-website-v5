@@ -9,8 +9,8 @@
         description="Keadaan situs dan pekerjaan yang perlu ditindaklanjuti."
     >
         <x-slot:actions>
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">Project baru</a>
-            <a href="{{ route('home') }}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Lihat situs ↗</a>
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary cursor-pointer">Project baru</a>
+            <a href="{{ route('home') }}" class="btn btn-secondary cursor-pointer" target="_blank" rel="noopener noreferrer">Lihat situs ↗</a>
         </x-slot:actions>
     </x-admin.page-header>
 
@@ -33,7 +33,7 @@
         <section class="xl:col-span-8">
             <div class="flex items-end justify-between gap-4 border-b border-line pb-3">
                 <h2 class="font-display text-xl font-semibold tracking-[-0.03em] text-ink">Entri terakhir</h2>
-                <a href="{{ route('admin.projects.index') }}" class="font-mono text-[9px] uppercase tracking-[0.12em] text-cobalt hover:underline">Semua project →</a>
+                <a href="{{ route('admin.projects.index') }}" class="font-mono text-[9px] uppercase tracking-[0.12em] text-cobalt hover:underline cursor-pointer">Semua project →</a>
             </div>
 
             <div class="table-wrap mt-4">
@@ -50,7 +50,7 @@
                         @forelse ($recentProjects as $project)
                             <tr>
                                 <td>
-                                    <a href="{{ route('admin.projects.edit', $project) }}" class="font-medium text-ink hover:text-cobalt">{{ $project->title }}</a>
+                                    <a href="{{ route('admin.projects.edit', $project) }}" class="font-medium text-ink hover:text-cobalt cursor-pointer">{{ $project->title }}</a>
                                     <p class="mt-1 font-mono text-[9px] text-ink-faint">/{{ $project->slug }}</p>
                                 </td>
                                 <td class="text-ink-soft">{{ $project->category }}</td>
@@ -72,12 +72,12 @@
         <aside class="xl:col-span-4">
             <div class="flex items-end justify-between gap-4 border-b border-line pb-3">
                 <h2 class="font-display text-xl font-semibold tracking-[-0.03em] text-ink">Kotak masuk</h2>
-                <a href="{{ route('admin.messages.index') }}" class="font-mono text-[9px] uppercase tracking-[0.12em] text-cobalt hover:underline">Semua →</a>
+                <a href="{{ route('admin.messages.index') }}" class="font-mono text-[9px] uppercase tracking-[0.12em] text-cobalt hover:underline cursor-pointer">Semua →</a>
             </div>
 
             <div class="mt-4 divide-y divide-line border border-line bg-paper-raised">
                 @forelse ($recentMessages as $message)
-                    <a href="{{ route('admin.messages.show', $message) }}" class="block px-4 py-3 transition-colors hover:bg-cobalt-wash/40">
+                    <a href="{{ route('admin.messages.show', $message) }}" class="block px-4 py-3 transition-colors hover:bg-cobalt-wash/40 cursor-pointer">
                         <div class="flex items-center justify-between gap-3">
                             <span class="flex items-center gap-2 text-sm font-medium text-ink">
                                 @if ($message->isUnread())
@@ -112,7 +112,7 @@
                         <span class="stamp stamp-manila">Disembunyikan</span>
                     @endif
                 </div>
-                <a href="{{ route('admin.profile.edit') }}" class="mt-4 inline-flex font-mono text-[9px] uppercase tracking-[0.12em] text-cobalt hover:underline">Kelola profil →</a>
+                <a href="{{ route('admin.profile.edit') }}" class="mt-4 inline-flex font-mono text-[9px] uppercase tracking-[0.12em] text-cobalt hover:underline cursor-pointer">Kelola profil →</a>
             </div>
         </aside>
     </div>

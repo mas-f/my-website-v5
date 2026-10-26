@@ -9,8 +9,8 @@
         description="Perbarui konten, media, dan status publikasi."
     >
         <x-slot:actions>
-            <button type="submit" form="project-form" class="btn btn-primary">Simpan perubahan</button>
-            <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary">Kembali</a>
+            <button type="submit" form="project-form" class="btn btn-primary cursor-pointer">Simpan perubahan</button>
+            <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary cursor-pointer">Kembali</a>
         </x-slot:actions>
     </x-admin.page-header>
 

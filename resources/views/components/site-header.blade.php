@@ -24,7 +24,7 @@
   </div>
 
   <div class="mx-auto flex max-w-360 items-center justify-between gap-6 px-5 py-4 sm:px-8 lg:px-12">
-    <a href="{{ route('home') }}" class="group flex items-center gap-3" aria-label="{{ $profile->name }} — beranda">
+    <a href="{{ route('home') }}" class="group flex items-center gap-3 cursor-pointer" aria-label="{{ $profile->name }} — beranda">
       @if ($profile->hasLogo())
         <img src="{{ $profile->logo_url }}" alt=""
           class="size-9 shrink-0 object-contain transition-opacity group-hover:opacity-80">
@@ -45,7 +45,7 @@
 
     <nav class="hidden items-center gap-7 lg:flex" aria-label="Navigasi utama">
       @foreach ($nav as $item)
-        <a href="{{ route($item['route']) }}" class="nav-link"
+        <a href="{{ route($item['route']) }}" class="nav-link cursor-pointer"
           @if (request()->routeIs($item['pattern'])) aria-current="page" @endif>
           {{ $item['label'] }}
         </a>
@@ -54,17 +54,17 @@
 
     <div class="hidden items-center gap-3 lg:flex">
       @if ($profile->hasCv())
-        <a href="{{ $profile->cv_url }}" class="btn btn-secondary"
+        <a href="{{ $profile->cv_url }}" class="btn btn-secondary cursor-pointer"
           download="{{ $profile->cv_original_name ?: 'CV-' . $profile->name }}">Unduh CV</a>
       @endif
-      <a href="{{ route('contact.create') }}" class="btn btn-primary">
+      <a href="{{ route('contact.create') }}" class="btn btn-primary cursor-pointer">
         Mulai percakapan
         <span aria-hidden="true">→</span>
       </a>
     </div>
 
     <button type="button"
-      class="inline-flex items-center gap-2 border border-line-strong px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink lg:hidden"
+      class="inline-flex items-center gap-2 border border-line-strong px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink lg:hidden cursor-pointer"
       data-nav-toggle aria-controls="mobile-nav" aria-expanded="false">
       Menu
       <span class="flex w-4 flex-col gap-1" aria-hidden="true">
@@ -80,7 +80,7 @@
       <nav class="grid gap-1" aria-label="Navigasi seluler">
         @foreach ($nav as $item)
           <a href="{{ route($item['route']) }}"
-            class="flex items-center justify-between border-b border-line py-3 text-lg text-ink"
+            class="flex items-center justify-between border-b border-line py-3 text-lg text-ink cursor-pointer"
             @if (request()->routeIs($item['pattern'])) aria-current="page" @endif>
             {{ $item['label'] }}
             <span class="font-mono text-[10px] text-ink-faint">0{{ $loop->iteration }}</span>
@@ -89,15 +89,15 @@
       </nav>
 
       <div class="mt-6 flex flex-wrap gap-3">
-        <a href="{{ route('contact.create') }}" class="btn btn-primary">Mulai percakapan</a>
+        <a href="{{ route('contact.create') }}" class="btn btn-primary cursor-pointer">Mulai percakapan</a>
         @if ($profile->hasCv())
-          <a href="{{ $profile->cv_url }}" class="btn btn-secondary" download>Unduh CV</a>
+          <a href="{{ $profile->cv_url }}" class="btn btn-secondary cursor-pointer" download>Unduh CV</a>
         @endif
       </div>
 
       <div class="mt-6 space-y-1 font-mono text-[10px] uppercase tracking-[0.12em] text-ink-faint">
         <p>{{ $profile->location }}</p>
-        <a href="mailto:{{ $profile->email }}" class="link-underline text-cobalt">{{ $profile->email }}</a>
+        <a href="mailto:{{ $profile->email }}" class="link-underline text-cobalt cursor-pointer">{{ $profile->email }}</a>
       </div>
     </div>
   </div>

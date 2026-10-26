@@ -100,7 +100,7 @@
                 <p class="max-w-[34ch] text-xs leading-relaxed text-ink-faint">
                   Dengan mengirim pesan, Anda setuju pesan disimpan di database situs ini.
                 </p>
-                <button type="submit" class="btn btn-primary" data-submit>
+                <button type="submit" class="btn btn-primary cursor-pointer" data-submit>
                   <span data-submit-label>Kirim pesan</span>
                   <span aria-hidden="true">→</span>
                 </button>
@@ -119,18 +119,18 @@
                 <div class="px-4 py-4">
                   <p class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">Email</p>
                   <a href="mailto:{{ $profile->email }}"
-                    class="mt-1 block break-all text-sm text-cobalt hover:underline">{{ $profile->email }}</a>
+                    class="mt-1 block break-all text-sm text-cobalt hover:underline cursor-pointer">{{ $profile->email }}</a>
                 </div>
                 <div class="px-4 py-4">
                   <p class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">GitHub</p>
-                  <a href="{{ $profile->github_url }}" class="mt-1 block break-all text-sm text-cobalt hover:underline"
+                  <a href="{{ $profile->github_url }}" class="mt-1 block break-all text-sm text-cobalt hover:underline cursor-pointer"
                     target="_blank" rel="noopener noreferrer">GitHub ↗</a>
                 </div>
                 @if ($profile->linkedin_url)
                   <div class="px-4 py-4">
                     <p class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">LinkedIn</p>
                     <a href="{{ $profile->linkedin_url }}"
-                      class="mt-1 block break-all text-sm text-cobalt hover:underline" target="_blank"
+                      class="mt-1 block break-all text-sm text-cobalt hover:underline cursor-pointer" target="_blank"
                       rel="noopener noreferrer">LinkedIn ↗</a>
                   </div>
                 @endif
@@ -142,7 +142,7 @@
                   <p class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">CV</p>
                   @if ($profile->hasCv())
                     <a href="{{ $profile->cv_url }}"
-                      class="mt-1 inline-flex items-center gap-2 text-sm text-cobalt hover:underline" download>
+                      class="mt-1 inline-flex items-center gap-2 text-sm text-cobalt hover:underline cursor-pointer" download>
                       Unduh CV
                       <span aria-hidden="true">↓</span>
                     </a>

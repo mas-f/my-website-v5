@@ -24,7 +24,7 @@
 
 <body class="min-h-screen bg-paper text-ink antialiased">
   <a href="#admin-main"
-    class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:border focus:border-ink focus:bg-ink focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-widest focus:text-paper-raised">
+    class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:border focus:border-ink focus:bg-ink focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-widest focus:text-paper-raised cursor-pointer">
     Lompat ke konten
   </a>
 
@@ -48,7 +48,7 @@
     <div class="flex items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-8">
       <div class="flex items-center gap-3">
         <button type="button"
-          class="inline-flex items-center gap-2 border border-line-strong px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink lg:hidden"
+          class="inline-flex items-center gap-2 border border-line-strong px-3 py-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink lg:hidden cursor-pointer"
           data-nav-toggle aria-controls="admin-nav" aria-expanded="false">
           Menu
           <span class="flex w-4 flex-col gap-1" aria-hidden="true">
@@ -58,7 +58,7 @@
           </span>
         </button>
 
-        <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3">
+        <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 cursor-pointer">
           @if ($site->hasLogo())
             <img src="{{ $site->logo_url }}" alt="" class="size-8 shrink-0 object-contain">
           @else
@@ -75,14 +75,14 @@
 
       <div class="flex items-center gap-2">
         <a href="{{ route('home') }}"
-          class="hidden border border-line-strong px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-soft transition-colors hover:border-ink hover:text-ink sm:inline-flex"
+          class="hidden border border-line-strong px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-soft transition-colors hover:border-ink hover:text-ink sm:inline-flex cursor-pointer"
           target="_blank" rel="noopener noreferrer">
           Lihat situs ↗
         </a>
         <form action="{{ route('admin.logout') }}" method="POST">
           @csrf
           <button type="submit"
-            class="border border-line-strong px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-soft transition-colors hover:border-stamp hover:text-stamp">
+            class="border border-line-strong px-3 py-2 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-soft transition-colors hover:border-stamp hover:text-stamp cursor-pointer">
             Keluar
           </button>
         </form>
@@ -98,7 +98,7 @@
           <p class="px-2 font-mono text-[9px] uppercase tracking-[0.14em] text-ink-faint">Navigasi</p>
           <nav class="mt-3 grid gap-1" aria-label="Navigasi admin">
             @foreach ($nav as $item)
-              <a href="{{ route($item['route']) }}" class="admin-nav-link"
+              <a href="{{ route($item['route']) }}" class="admin-nav-link cursor-pointer"
                 @if (request()->routeIs($item['pattern'])) aria-current="page" @endif>
                 <span class="font-mono text-[9px] text-ink-faint">{{ $item['number'] }}</span>
                 <span class="flex-1">{{ $item['label'] }}</span>
@@ -111,7 +111,7 @@
           </nav>
 
           <div class="mt-6 border-t border-line pt-4">
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary w-full">
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary w-full cursor-pointer">
               Project baru
               <span aria-hidden="true">+</span>
             </a>
