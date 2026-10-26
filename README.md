@@ -1,6 +1,6 @@
 # Fikri Amrullah — Portfolio & Build Log
 
-A Laravel portfolio for Fikri Amrullah, a full-stack developer in Garut, Indonesia. The public site presents project work as technical case studies; the admin area is a working content desk for projects, messages, the public profile, and the CV.
+A Laravel portfolio for Fikri Amrullah, a full-stack developer in Garut, Indonesia. The public site presents project work as technical case studies; the admin area is a working content desk for projects, categories, messages, the public profile, and the CV.
 
 The visual system is documented in [`DESIGN.md`](DESIGN.md) and `.impeccable/design.json`. Product truth and constraints live in [`PRODUCT.md`](PRODUCT.md); the original Indonesian specification is [`PROMPT.MD`](PROMPT.MD).
 
@@ -16,11 +16,11 @@ The visual system is documented in [`DESIGN.md`](DESIGN.md) and `.impeccable/des
 ## What is included
 
 - Public pages: `/`, `/about`, `/skills`, `/projects`, `/projects/{slug}`, `/services`, `/contact`
-- Project index as a ledger with category filtering, technical plates, placeholder labels, and featured state
+- Project index as a ledger with managed category filters (only categories with published projects appear), technical plates, placeholder labels, and featured state
 - Project detail pages with problem, solution, implementation, features, stack, links, and gallery
 - Contact form with server-side validation, CSRF, a honeypot, rate limiting, database storage, and best-effort email notification
-- Admin area under `/admin`: login, dashboard, project CRUD, thumbnail/gallery uploads, draft/published status, featured flag, sort order, message inbox, public profile/CV management, account and password changes
-- No public admin registration; the first admin is created with an Artisan command
+- Admin area under `/admin`: login, dashboard, project and category CRUD, thumbnail/gallery uploads, draft/published status, featured flag, sort order, message inbox, public profile/CV management, account and password changes
+- No public admin registration; the first admin is created from `DATA_EMAIL` and `DATA_PASSWORD` during seeding
 - Only published projects are public; drafts return 404 even with a known slug
 - CV and LinkedIn are hidden until the administrator supplies them
 - SEO metadata, Open Graph, canonical URLs, `/sitemap.xml`, and `robots.txt`
@@ -43,7 +43,7 @@ cp .env.example .env          # Windows: copy .env.example .env
 php artisan key:generate
 ```
 
-Configure the database in `.env`:
+Configure the database and first-admin credentials in `.env`:
 
 ```dotenv
 DB_CONNECTION=mysql
@@ -52,19 +52,23 @@ DB_PORT=3306
 DB_DATABASE=my-website-v5
 DB_USERNAME=root
 DB_PASSWORD=
+
+DATA_EMAIL=fikri.amrulloh15@gmail.com
+DATA_PASSWORD=use-a-strong-password
 ```
 
-Then migrate, seed, link storage, build assets, and create the first admin:
+Then migrate, seed, link storage, and build assets:
 
 ```bash
 php artisan migrate --seed
 php artisan storage:link
 npm install
 npm run build
-php artisan admin:create
 ```
 
-`php artisan admin:create` asks for a name, email, and password. Leaving the password blank generates a 20-character password and prints it once. It can also be used non-interactively:
+`php artisan migrate --seed` creates the admin from `DATA_EMAIL` and `DATA_PASSWORD` if that email does not exist. Set both before seeding. The seeded admin name is `Fikri Amrullah`; the password is only applied when the account is first created, so later seeds do not change it.
+
+`php artisan admin:create` remains available for manual admin creation, promotion, or password reset. It asks for a name, email, and password. Leaving the password blank generates a 20-character password and prints it once. It can also be used non-interactively:
 
 ```bash
 php artisan admin:create --name="Fikri Amrullah" --email="fikri.amrulloh15@gmail.com"
@@ -82,16 +86,20 @@ That runs the Laravel server, queue listener, and Vite together. Do not start `n
 
 ### Seeded data
 
+Set `DATA_EMAIL` and `DATA_PASSWORD` before seeding; the admin account is created from them.
+
 `php artisan migrate --seed` seeds:
 
+- The admin account from `DATA_EMAIL` and `DATA_PASSWORD` (name: `Fikri Amrullah`). The password is only used when the account is first created; later seeds do not change it.
 - The public site profile: Fikri Amrullah, Full Stack Developer, Garut, Indonesia, `fikri.amrulloh15@gmail.com`, and GitHub `https://github.com/massiki`.
-- Four clearly labelled placeholder projects, but only in the `local` and `testing` environments. Production seeding creates the site profile only.
+- Four categories (`Web App`, `Company Profile`, `E-Commerce`, `Dashboard`) and four clearly labelled placeholder projects, but only in the `local` and `testing` environments. Production seeding creates the site profile and the admin account; demo categories and projects are not seeded outside `local`/`testing`.
 
 The placeholder projects are intentionally marked `is_placeholder` and show a “Contoh” stamp. Replace them through `/admin/projects`; do not present them as real client work.
 
 ## Admin workflow
 
-- **Projects:** create, edit, delete, upload a thumbnail, add gallery images, set draft/published, mark featured, and control sort order. Slugs are generated from the title and can be edited.
+- **Projects:** create, edit, delete, assign a required category from the managed list, upload a thumbnail, add gallery images, set draft/published, mark featured, and control sort order. Slugs are generated from the title and can be edited.
+- **Categories:** create, edit, and delete project categories. Each category has a name, slug, and sort order; slugs are generated from the name and can be edited. A category that is still used by a project cannot be deleted; move those projects to another category first.
 - **Messages:** read the inbox, mark messages read/unread, and delete them. Messages are stored before any email is sent.
 - **Profile & CV:** update the public name, role, location, email, GitHub URL, and optional LinkedIn URL. Upload or remove the CV PDF/document. The public CV button stays hidden until a file exists.
 - **Account:** change the admin name/email and password. Password changes require the current password.
@@ -189,6 +197,9 @@ DB_DATABASE=...
 DB_USERNAME=...
 DB_PASSWORD=...
 
+DATA_EMAIL=...
+DATA_PASSWORD=...
+
 SESSION_DRIVER=database
 CACHE_STORE=database
 QUEUE_CONNECTION=sync
@@ -204,6 +215,8 @@ MAIL_FROM_ADDRESS="fikri.amrulloh15@gmail.com"
 MAIL_FROM_NAME="Fikri Amrullah"
 ```
 
+Set `DATA_EMAIL` and `DATA_PASSWORD` before step 5; `db:seed --force` creates the admin from them.
+
 Use a strong, unique `APP_KEY` generated on the server with `php artisan key:generate --show` (or copy the local key only if you understand the consequences). Never commit `.env`.
 
 ### 5. Migrate and seed
@@ -214,15 +227,21 @@ php artisan db:seed --force
 php artisan storage:link
 ```
 
-In production, `db:seed` creates the site profile only; the four demo projects are not seeded outside `local`/`testing`.
+In production, `db:seed` creates the site profile and the admin account from `DATA_EMAIL` and `DATA_PASSWORD`; the demo categories and projects are not seeded outside `local`/`testing`.
 
-### 6. Create the admin
+For an existing installation, the category migration backfills categories from the old free-text project data and removes the old `projects.category` column.
+
+### 6. Verify the admin
+
+`db:seed --force` creates the admin from `DATA_EMAIL` and `DATA_PASSWORD` only if the email does not already exist. If the account exists, the seeder leaves it unchanged. Log in at `/admin/login` and change the password after the first login. Use a strong password and store it in a password manager.
+
+Changing `DATA_PASSWORD` later does not reset an existing admin password. To create, promote, or reset an admin manually, use:
 
 ```bash
 php artisan admin:create
 ```
 
-Use a strong password and store it in a password manager. There is no public registration path.
+There is no public registration path.
 
 ### 7. Cache and permissions
 
@@ -254,15 +273,15 @@ If `php artisan storage:link` cannot create a symlink on the host, ask the host 
 
 ```text
 app/
-  Console/Commands/CreateAdminCommand.php   first-admin provisioning
+  Console/Commands/CreateAdminCommand.php   manual admin create/promote/reset
   Enums/                                    project and message states
   Http/Controllers/                         public and admin controllers
   Http/Requests/                            server-side validation
   Mail/ContactMessageReceived.php           contact notification
-  Models/                                   Project, ProjectImage, ContactMessage, SiteProfile, User
+  Models/                                   Category, Project, ProjectImage, ContactMessage, SiteProfile, User
 database/
   migrations/                               schema
-  seeders/                                  site profile + local demo projects
+  seeders/                                  site profile, admin account, and local demo categories/projects
 resources/
   css/app.css                               Tailwind 4 theme and component layer
   js/app.js                                 navigation, filters, reveal, dialogs, previews
@@ -278,4 +297,5 @@ DESIGN.md                                   design-system tokens and rules
 - Do not add React, Vue, Next.js, Prisma, a separate API backend, or Node server code. Node is only for Vite.
 - Do not invent clients, employers, metrics, testimonials, or project outcomes. Replace placeholder content with real material through the admin.
 - The public project queries exclude drafts at the query level; do not rely on hidden UI for authorization.
+- Project categories are normalized in the `categories` table and referenced by `projects.category_id`; the old free-text `projects.category` column was removed. Do not reintroduce a free-text category column.
 - If you change the design system, update both `DESIGN.md` and `.impeccable/design.json`.
