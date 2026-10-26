@@ -29,7 +29,7 @@ Public portfolio home for an Experience surface. The work itself must lead from 
 
 ## Chosen direction
 
-**Build Log** — an engineer's field notebook and annotated project ledger. The page is a working sheet: graph-paper ground, graphite ink, cobalt annotations, manila index tabs, stamped statuses, and technical plates. The project index is a ledger of entries rather than a card grid. The memorable moment is the first viewport's live system map, a Laravel request path drawn as a field diagram that responds to the current project entry.
+**Build Log** — an engineer's field notebook and annotated project ledger. The page is a working sheet: graph-paper ground, graphite ink, cobalt annotations, manila index tabs, stamped statuses, and technical plates. The project index is a ledger of entries rather than a card grid. The memorable moment is the SDLC process map in the “Cara kerja” section, a technology-agnostic four-phase field diagram that closes with a feedback loop.
 
 ## Direction contract
 
@@ -39,7 +39,7 @@ OWN-WORLD: Cool paper ground with a faint drafting grid; graphite ink; cobalt an
 
 STORY: The visitor sees a developer who thinks in systems, then reads four project entries that expose problem, solution, implementation, and trade-offs. They leave with a clear sense of capability and an obvious way to start a conversation.
 
-FIRST VIEWPORT: One full-width drafting sheet. The name and a large statement occupy the upper-left field; a live Laravel request-path diagram spans the lower-right field with nodes for route, controller, model, database, and Blade, connected by hairline cobalt traces. A narrow left margin carries the current status and an index of the four entries. The primary action sits at the end of the diagram path as a clearly clickable "Buka log project" line. The first project entry begins at the fold, not below a badge row.
+FIRST VIEWPORT: One full-width drafting sheet. The name and a large statement occupy the upper-left field; a 4:5 portrait plate anchors the right field. A narrow left margin carries the current status and an index of the four entries. The primary action sits after the statement. The first project entry begins at the fold, not below a badge row.
 
 FORM: Grounded direction 5 of 7 (engineering field notebook); seed:d88044f5b5557d52.
 

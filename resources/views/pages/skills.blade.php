@@ -1,8 +1,9 @@
 @extends('layouts.public')
 
 @section('title', 'Keahlian — ' . $profile->name)
-@section('description', 'Alat dan keahlian yang dipakai Fikri Amrullah untuk membangun aplikasi web Laravel: PHP, MySQL,
-  Blade, Tailwind CSS, JavaScript, dan pengujian.')
+@section('description',
+  'Toolkit dan keahlian Fikri Amrullah: PHP, Laravel, Node.js, MySQL, PostgreSQL, Blade, Livewire,
+  Tailwind CSS, Bootstrap, JavaScript, TypeScript, React, Next.js, Figma, Postman, Trello, dan pengujian.')
 @section('canonical', route('skills'))
 
 @section('content')
@@ -87,7 +88,7 @@
         <h2 class="display max-w-[18ch] text-[clamp(2.2rem,4vw,3.6rem)] text-paper">Keahlian terlihat dari keputusan.</h2>
       </div>
       <a href="{{ route('projects.index') }}"
-        class="btn bg-paper-raised text-ink hover:bg-cobalt hover:text-paper-raised">Buka log project</a>
+        class="btn bg-paper-raised text-ink hover:bg-cobalt hover:text-paper-raised cursor-pointer">Buka log project</a>
     </div>
   </section>
 @endsection

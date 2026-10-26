@@ -9,7 +9,7 @@
         description="Kelola entri yang tampil di log project. Draft tidak akan terlihat publik."
     >
         <x-slot:actions>
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">Project baru</a>
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary cursor-pointer">Project baru</a>
         </x-slot:actions>
     </x-admin.page-header>
 
@@ -27,9 +27,9 @@
             </select>
         </div>
         <div class="flex gap-2">
-            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="submit" class="btn btn-primary cursor-pointer">Filter</button>
             @if (request()->filled('q') || request()->filled('status'))
-                <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary">Reset</a>
+                <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary cursor-pointer">Reset</a>
             @endif
         </div>
     </form>
@@ -60,7 +60,7 @@
                             @endif
                         </td>
                         <td>
-                            <a href="{{ route('admin.projects.edit', $project) }}" class="font-medium text-ink hover:text-cobalt">{{ $project->title }}</a>
+                            <a href="{{ route('admin.projects.edit', $project) }}" class="font-medium text-ink hover:text-cobalt cursor-pointer">{{ $project->title }}</a>
                             <p class="mt-1 font-mono text-[9px] text-ink-faint">/{{ $project->slug }} · {{ $project->images_count }} gambar</p>
                         </td>
                         <td class="text-ink-soft">{{ $project->category }}</td>
@@ -76,13 +76,13 @@
                         <td>
                             <div class="flex flex-wrap justify-end gap-2">
                                 @if ($project->isPublished())
-                                    <a href="{{ route('projects.show', $project) }}" class="border border-line-strong px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-ink-soft hover:border-ink hover:text-ink" target="_blank" rel="noopener noreferrer">Lihat</a>
+                                    <a href="{{ route('projects.show', $project) }}" class="border border-line-strong px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-ink-soft hover:border-ink hover:text-ink cursor-pointer" target="_blank" rel="noopener noreferrer">Lihat</a>
                                 @endif
-                                <a href="{{ route('admin.projects.edit', $project) }}" class="border border-line-strong px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-ink-soft hover:border-ink hover:text-ink">Edit</a>
+                                <a href="{{ route('admin.projects.edit', $project) }}" class="border border-line-strong px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-ink-soft hover:border-ink hover:text-ink cursor-pointer">Edit</a>
                                 <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" data-confirm-form="admin-confirm-dialog" class="inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="border border-stamp/40 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-stamp hover:bg-stamp hover:text-paper-raised">Hapus</button>
+                                    <button type="submit" class="border border-stamp/40 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-stamp hover:bg-stamp hover:text-paper-raised cursor-pointer">Hapus</button>
                                 </form>
                             </div>
                         </td>
@@ -92,7 +92,7 @@
                         <td colspan="7" class="py-12 text-center">
                             <p class="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-faint">Belum ada project</p>
                             <p class="mt-2 text-sm text-ink-soft">Mulai dengan membuat entri pertama.</p>
-                            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary mt-4">Project baru</a>
+                            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary mt-4 cursor-pointer">Project baru</a>
                         </td>
                     </tr>
                 @endforelse

@@ -28,9 +28,9 @@
             </select>
         </div>
         <div class="flex gap-2">
-            <button type="submit" class="btn btn-primary">Filter</button>
+            <button type="submit" class="btn btn-primary cursor-pointer">Filter</button>
             @if (request()->filled('q') || request()->filled('status'))
-                <a href="{{ route('admin.messages.index') }}" class="btn btn-secondary">Reset</a>
+                <a href="{{ route('admin.messages.index') }}" class="btn btn-secondary cursor-pointer">Reset</a>
             @endif
         </div>
     </form>
@@ -55,17 +55,17 @@
                             <p class="mt-1 break-all font-mono text-[9px] text-ink-faint">{{ $message->email }}</p>
                         </td>
                         <td>
-                            <a href="{{ route('admin.messages.show', $message) }}" class="font-medium text-ink hover:text-cobalt">{{ $message->subject }}</a>
+                            <a href="{{ route('admin.messages.show', $message) }}" class="font-medium text-ink hover:text-cobalt cursor-pointer">{{ $message->subject }}</a>
                             <p class="mt-1 line-clamp-1 max-w-md text-sm text-ink-soft">{{ $message->message }}</p>
                         </td>
                         <td class="font-mono text-[10px] text-ink-faint">{{ $message->created_at->translatedFormat('d M Y H:i') }}</td>
                         <td>
                             <div class="flex justify-end gap-2">
-                                <a href="{{ route('admin.messages.show', $message) }}" class="border border-line-strong px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-ink-soft hover:border-ink hover:text-ink">Buka</a>
+                                <a href="{{ route('admin.messages.show', $message) }}" class="border border-line-strong px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-ink-soft hover:border-ink hover:text-ink cursor-pointer">Buka</a>
                                 <form action="{{ route('admin.messages.destroy', $message) }}" method="POST" data-confirm-form="admin-confirm-dialog" class="inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="border border-stamp/40 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-stamp hover:bg-stamp hover:text-paper-raised">Hapus</button>
+                                    <button type="submit" class="border border-stamp/40 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-stamp hover:bg-stamp hover:text-paper-raised cursor-pointer">Hapus</button>
                                 </form>
                             </div>
                         </td>

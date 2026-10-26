@@ -175,11 +175,11 @@
 
     <div class="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-line pt-5">
         <div class="flex flex-wrap gap-2">
-            <button type="submit" class="btn btn-primary">Simpan project</button>
-            <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary">Batal</a>
+            <button type="submit" class="btn btn-primary cursor-pointer">Simpan project</button>
+            <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary cursor-pointer">Batal</a>
         </div>
         @if ($isEdit && $project->isPublished())
-            <a href="{{ route('projects.show', $project) }}" class="font-mono text-[9px] uppercase tracking-[0.12em] text-cobalt hover:underline" target="_blank" rel="noopener noreferrer">Lihat di situs ↗</a>
+            <a href="{{ route('projects.show', $project) }}" class="font-mono text-[9px] uppercase tracking-[0.12em] text-cobalt hover:underline cursor-pointer" target="_blank" rel="noopener noreferrer">Lihat di situs ↗</a>
         @endif
     </div>
 </form>
@@ -199,7 +199,7 @@
                             <form action="{{ route('admin.projects.images.destroy', [$project, $image]) }}" method="POST" data-confirm-form="admin-confirm-dialog" class="mt-2">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="w-full border border-stamp/40 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-stamp hover:bg-stamp hover:text-paper-raised">Hapus gambar</button>
+                                <button type="submit" class="w-full border border-stamp/40 px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-stamp hover:bg-stamp hover:text-paper-raised cursor-pointer">Hapus gambar</button>
                             </form>
                         </div>
                     @endforeach
@@ -215,7 +215,7 @@
                 <p class="help">Maksimal 8 gambar, 4 MB per file.</p>
                 @error('images') <p class="error">{{ $message }}</p> @enderror
                 @error('images.*') <p class="error">{{ $message }}</p> @enderror
-                <button type="submit" class="btn btn-secondary mt-4">Unggah gambar</button>
+                <button type="submit" class="btn btn-secondary mt-4 cursor-pointer">Unggah gambar</button>
             </form>
         </div>
     </section>
@@ -233,7 +233,7 @@
             <form action="{{ route('admin.projects.destroy', $project) }}" method="POST" data-confirm-form="admin-confirm-dialog">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Hapus project</button>
+                <button type="submit" class="btn btn-danger cursor-pointer">Hapus project</button>
             </form>
         </div>
     </div>

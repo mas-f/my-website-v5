@@ -9,9 +9,9 @@
         description="Pratinjau internal entri project."
     >
         <x-slot:actions>
-            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary">Edit project</a>
+            <a href="{{ route('admin.projects.edit', $project) }}" class="btn btn-primary cursor-pointer">Edit project</a>
             @if ($project->isPublished())
-                <a href="{{ route('projects.show', $project) }}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Lihat publik ↗</a>
+                <a href="{{ route('projects.show', $project) }}" class="btn btn-secondary cursor-pointer" target="_blank" rel="noopener noreferrer">Lihat publik ↗</a>
             @endif
         </x-slot:actions>
     </x-admin.page-header>

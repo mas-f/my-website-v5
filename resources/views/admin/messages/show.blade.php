@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="flex flex-wrap items-center justify-between gap-3">
-        <a href="{{ route('admin.messages.index') }}" class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-faint hover:text-cobalt">
+        <a href="{{ route('admin.messages.index') }}" class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-faint hover:text-cobalt cursor-pointer">
             <span aria-hidden="true">←</span> Kembali ke pesan
         </a>
         <span class="stamp {{ $message->status->stampClass() }}">{{ $message->status->label() }}</span>
@@ -26,7 +26,7 @@
                         </div>
                         <div>
                             <p class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">Email</p>
-                            <a href="mailto:{{ $message->email }}" class="mt-1 block break-all text-sm text-cobalt hover:underline">{{ $message->email }}</a>
+                            <a href="mailto:{{ $message->email }}" class="mt-1 block break-all text-sm text-cobalt hover:underline cursor-pointer">{{ $message->email }}</a>
                         </div>
                     </div>
                     <div class="mt-5 whitespace-pre-line text-[0.975rem] leading-relaxed text-ink-soft">{{ $message->message }}</div>
@@ -34,11 +34,11 @@
             </div>
 
             <div class="mt-5 flex flex-wrap gap-3">
-                <a href="mailto:{{ $message->email }}?subject={{ rawurlencode('Re: '.$message->subject) }}" class="btn btn-primary">Balas via email ↗</a>
+                <a href="mailto:{{ $message->email }}?subject={{ rawurlencode('Re: '.$message->subject) }}" class="btn btn-primary cursor-pointer">Balas via email ↗</a>
                 <form action="{{ route('admin.messages.destroy', $message) }}" method="POST" data-confirm-form="admin-confirm-dialog">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Hapus pesan</button>
+                    <button type="submit" class="btn btn-danger cursor-pointer">Hapus pesan</button>
                 </form>
             </div>
         </div>
@@ -60,7 +60,7 @@
                     @if ($errors->has('status'))
                         <p class="error">{{ $errors->first('status') }}</p>
                     @endif
-                    <button type="submit" class="btn btn-secondary mt-4 w-full">Simpan status</button>
+                    <button type="submit" class="btn btn-secondary mt-4 w-full cursor-pointer">Simpan status</button>
                 </form>
                 <div class="border-t border-line px-4 py-3">
                     <p class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">Dibaca</p>

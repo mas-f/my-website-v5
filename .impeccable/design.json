@@ -492,7 +492,7 @@
       "Graphite ink for reading, cobalt for annotation and interaction, manila for index tabs.",
       "Ledger rows and ruled sheets instead of card grids and rounded panels.",
       "A 3/9 editorial split with a sticky left margin for section index and context.",
-      "A 4:5 profile portrait plate anchors the home hero; the system map sits with the three process steps.",
+      "A 4:5 profile portrait plate anchors the home hero; the SDLC process map sits below the four process phases.",
       "Mono metadata at small sizes, with generous space around display type.",
       "Soft, offset paper-lift shadows; 1px warm rules are the default separator.",
       "Editable site logo replaces the FA monogram, sits directly on paper, and uses a raised-paper backing on dark auth surfaces. The browser tab icon follows the uploaded logo via a generated 64×64 PNG favicon, with public/favicon.svg as fallback."

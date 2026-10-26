@@ -191,7 +191,7 @@ The material palette is warm and low-chroma, with soft paper-lift shadows reserv
 - Graphite ink for reading, cobalt for annotation and interaction, manila for index tabs.
 - Ledger rows and ruled sheets instead of card grids and rounded panels.
 - A 3/9 editorial split with a sticky left margin for section index and context.
-- A 4:5 profile portrait plate anchors the home hero; the system map sits with the three process steps.
+- A 4:5 profile portrait plate anchors the home hero; the SDLC process map sits below the four process phases.
 - Mono metadata at small sizes, with generous space around display type.
 - Soft, offset paper-lift shadows; 1px warm rules are the default separator.
 
@@ -354,7 +354,9 @@ Corners are not softened to signal friendliness. The system's warmth comes from 
 
 **Profile Portrait Plate.** The home hero's right field: a 4:5 portrait frame with a 1px warm rule, paper-deep ground, and a bottom metadata strip carrying the plate label and location. A real photo fills the frame with `object-fit: cover`; without one, a provisional “FOTO” monogram and “Foto belum diunggah” label hold the space. The plate is never cropped or resized on the server and is never replaced with a stock portrait.
 
-**System Map.** A Laravel request path drawn as a field diagram: request → route → controller → model → MySQL → Blade → response. Hairline cobalt traces, mono labels, and a `Ulangi alur` control that replays the line-drawing animation. The diagram lives in the “Cara kerja” section below the three process steps, where it explains the request path; on mobile it becomes a numbered list.
+**Process Phase Ledger.** The “Cara kerja” section lists four phases as ruled ledger rows: a cobalt phase number, a display title, and a short bullet list on the right. It uses rows and rules instead of cards so the phases stay scannable, and the process map follows below.
+
+**Process Map / SDLC.** A four-phase development cycle drawn as a field diagram: Perencanaan → Analisis → Desain → Implementasi, with a dashed cobalt feedback path back to Perencanaan. Hairline cobalt traces, mono labels, and an `Ulangi alur` control that replays the line-drawing animation. The diagram sits below the four process phases and is intentionally technology-agnostic; on mobile it becomes a four-item list with a short feedback note.
 
 **Project Plate.** A technical thumbnail or authored SVG diagram framed as a plate, with a plate number, category stamp, stack count, and “Contoh” / “Log” marker. It is the visual evidence attached to each ledger entry, not a stock image card.
 

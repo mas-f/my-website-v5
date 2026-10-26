@@ -28,7 +28,7 @@
   <section class="paper-grid border-b border-line">
     <div class="mx-auto max-w-360 px-5 py-10 sm:px-8 lg:px-12 lg:py-14">
       <a href="{{ route('projects.index') }}"
-        class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-faint transition-colors hover:text-cobalt">
+        class="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-faint transition-colors hover:text-cobalt cursor-pointer">
         <span aria-hidden="true">←</span>
         Kembali ke log
       </a>
@@ -74,13 +74,13 @@
           @if ($project->live_url || $project->repository_url)
             <div class="mt-8 flex flex-wrap gap-3">
               @if ($project->live_url)
-                <a href="{{ $project->live_url }}" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+                <a href="{{ $project->live_url }}" class="btn btn-primary cursor-pointer" target="_blank" rel="noopener noreferrer">
                   Lihat hasil
                   <span aria-hidden="true">↗</span>
                 </a>
               @endif
               @if ($project->repository_url)
-                <a href="{{ $project->repository_url }}" class="btn btn-secondary" target="_blank"
+                <a href="{{ $project->repository_url }}" class="btn btn-secondary cursor-pointer" target="_blank"
                   rel="noopener noreferrer">
                   Repositori
                   <span aria-hidden="true">↗</span>
@@ -143,7 +143,7 @@
               </div>
             </dl>
             <a href="{{ route('contact.create') }}"
-              class="mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink transition-colors hover:border-cobalt hover:text-cobalt">
+              class="mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink transition-colors hover:border-cobalt hover:text-cobalt cursor-pointer">
               Diskusikan project serupa
               <span aria-hidden="true">→</span>
             </a>
@@ -261,7 +261,7 @@
         <h2 class="display max-w-[18ch] text-[clamp(2.2rem,4vw,3.6rem)] text-paper">Mari mulai dari masalahnya.</h2>
       </div>
       <a href="{{ route('contact.create') }}"
-        class="btn bg-paper-raised text-ink hover:bg-cobalt hover:text-paper-raised">
+        class="btn bg-paper-raised text-ink hover:bg-cobalt hover:text-paper-raised cursor-pointer">
         Kirim pesan
         <span aria-hidden="true">→</span>
       </a>

@@ -41,7 +41,7 @@
 
 <body class="min-h-screen bg-paper text-ink antialiased">
   <a href="#main"
-    class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:border focus:border-ink focus:bg-ink focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-widest focus:text-paper-raised">
+    class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-100 focus:border focus:border-ink focus:bg-ink focus:px-4 focus:py-2 focus:font-mono focus:text-xs focus:uppercase focus:tracking-widest focus:text-paper-raised cursor-pointer">
     Lompat ke konten
   </a>
 

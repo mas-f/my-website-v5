@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Fikri Amrullah',
             'email' => env('DATA_EMAIL'),
             'password' => bcrypt(env('DATA_PASSWORD')),
-            'is_admin' => true
+            'is_admin' => true,
         ]);
     }
 }
