@@ -1,7 +1,8 @@
 @extends('layouts.public')
 
 @section('title', 'Kontak — ' . $profile->name)
-@section('description', 'Hubungi Fikri Amrullah untuk membahas aplikasi web Laravel, perbaikan, atau konsultasi
+@section('description',
+  'Hubungi Fikri Amrullah untuk membahas aplikasi web Laravel, perbaikan, atau konsultasi
   teknis.')
 @section('canonical', route('contact.create'))
 

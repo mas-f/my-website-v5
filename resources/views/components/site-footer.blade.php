@@ -18,6 +18,7 @@
         <div>
           <p class="eyebrow">Indeks</p>
           <nav class="mt-4 grid gap-2 text-sm text-ink-soft" aria-label="Navigasi footer">
+            <a href="{{ route('home') }}" class="link-underline w-fit hover:text-ink">Beranda</a>
             <a href="{{ route('about') }}" class="link-underline w-fit hover:text-ink">Tentang</a>
             <a href="{{ route('skills') }}" class="link-underline w-fit hover:text-ink">Keahlian</a>
             <a href="{{ route('projects.index') }}" class="link-underline w-fit hover:text-ink">Project</a>
@@ -54,7 +55,8 @@
     <div
       class="mt-14 flex flex-col gap-3 border-t border-line pt-5 font-mono text-[10px] uppercase tracking-[0.14em] text-ink-faint sm:flex-row sm:items-center sm:justify-between">
       <p>© {{ date('Y') }} {{ $profile->name }}. Semua hak dilindungi.</p>
-      <p>Dibangun dengan Laravel, Blade, Tailwind CSS, dan MySQL.</p>
+      {{-- <p>Dibangun dengan Laravel, Blade, Tailwind CSS, dan MySQL.</p> --}}
+      <p>Dibangun oleh Fikri Amrullah dengan Cinta 💖.</p>
     </div>
   </div>
 </footer>

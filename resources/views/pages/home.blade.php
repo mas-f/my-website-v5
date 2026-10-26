@@ -47,8 +47,8 @@
           </p>
 
           <p class="mt-5 max-w-[52ch] text-[0.975rem] leading-relaxed text-ink-soft">
-            Fokus pada Laravel, data yang rapi, dan pengalaman yang tidak membuat pengguna berpikir dua kali. Setiap
-            project disusun sebagai catatan kerja: masalah, pendekatan, dan keputusan teknis.
+            Fokus pada pengembangan Web Aplication dengan data yang rapi, dan pengalaman yang tidak membuat pengguna
+            berpikir dua kali. Setiap project disusun sebagai catatan kerja: masalah, pendekatan, dan keputusan teknis.
           </p>
 
           <div class="mt-9 flex flex-wrap items-center gap-3">
@@ -63,30 +63,18 @@
           </div>
 
           <div class="mt-12 grid grid-cols-2 border-t border-line sm:grid-cols-4">
-            @foreach (['Laravel', 'MySQL', 'Blade', 'Tailwind CSS'] as $tool)
+            @foreach (['Laravel', 'React', 'Next.js', 'Git'] as $technology)
               <div
                 class="border-b border-line py-3 pr-3 sm:border-b-0 sm:border-r sm:pl-4 sm:first:pl-0 sm:last:border-r-0">
-                <p class="font-mono text-[9px] uppercase tracking-[0.14em] text-ink-faint">Toolkit</p>
-                <p class="mt-1 text-sm text-ink">{{ $tool }}</p>
+                <p class="font-mono text-[9px] uppercase tracking-[0.14em] text-ink-faint">Technology</p>
+                <p class="mt-1 text-sm text-ink">{{ $technology }}</p>
               </div>
             @endforeach
           </div>
         </div>
 
         <div class="border-line py-10 lg:col-span-5 lg:py-16 lg:pl-10 xl:pl-14">
-          <div>
-            <x-profile-photo :profile="$profile" />
-
-            <div class="mt-8 border-t border-cobalt pt-4">
-              <p class="font-mono text-[9px] uppercase tracking-[0.14em] text-cobalt">Catatan lapangan</p>
-              <p class="mt-2 max-w-[36ch] font-display text-lg font-medium leading-snug tracking-[-0.02em] text-ink">
-                Struktur yang baik membuat perubahan terasa lebih kecil.
-              </p>
-              <p class="mt-2 text-sm leading-relaxed text-ink-soft">
-                Bukan soal menambah lapisan, tetapi menjaga agar setiap lapisan punya alasan.
-              </p>
-            </div>
-          </div>
+          <x-profile-photo :profile="$profile" />
         </div>
       </div>
 
@@ -106,7 +94,7 @@
           <div class="lg:sticky lg:top-28">
             <p class="eyebrow">01 / Log project</p>
             <p class="mt-3 max-w-[24ch] text-sm leading-relaxed text-ink-soft">
-              Empat entri contoh untuk memperlihatkan cara studi kasus disusun. Semua bisa diganti melalui panel admin.
+              Setiap proyek yang dikembangkan merupakan bukti nyata dari proses belajar melalui praktik langsung.
             </p>
             <a href="{{ route('projects.index') }}"
               class="mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink transition-colors hover:border-cobalt hover:text-cobalt">
@@ -120,7 +108,8 @@
           <div class="flex flex-wrap items-end justify-between gap-4 border-b border-ink pb-5">
             <h2 class="display text-[clamp(2.4rem,4.5vw,4rem)] text-ink">Catatan pekerjaan.</h2>
             <p class="max-w-[26ch] pb-1 text-sm leading-relaxed text-ink-soft">
-              Setiap entri menjelaskan konteks, keputusan, dan hal yang bisa diperiksa.
+              Setiap studi kasus harus bisa menyelesaikan masalah, solusi yang tepat digunakan dan peningkatkan apa yang
+              ingin dicapai.
             </p>
           </div>
 
@@ -145,8 +134,8 @@
         <div class="lg:col-span-3">
           <div class="lg:sticky lg:top-28">
             <p class="eyebrow">02 / Cara kerja</p>
-            <p class="mt-3 max-w-[22ch] text-sm leading-relaxed text-ink-soft">
-              Tidak ada proses ajaib. Hanya urutan yang bisa diperiksa.
+            <p class="mt-3 max-w-[26ch] text-sm leading-relaxed text-ink-soft">
+              Empat fase yang bisa diperiksa, dari perencanaan sampai implementasi.
             </p>
           </div>
         </div>
@@ -154,15 +143,67 @@
         <div class="lg:col-span-9">
           <h2 class="display max-w-[16ch] text-[clamp(2.4rem,4.5vw,4rem)] text-ink">Dari masalah ke sistem.</h2>
 
-          <div class="mt-10 grid gap-8 sm:grid-cols-3">
-            @foreach ([['01', 'Pahami alur', 'Siapa memakai, apa yang perlu diputuskan, dan di mana data harus tinggal.'], ['02', 'Rancang struktur', 'Skema, route, dan batas tanggung jawab dibuat sebelum antarmuka dibangun.'], ['03', 'Bangun dan uji', 'Implementasi kecil, validasi di server, lalu uji alur utama sebelum rilis.']] as [$number, $title, $body])
-              <div class="border-t border-ink pt-4">
-                <p class="font-mono text-[10px] tracking-[0.14em] text-cobalt">{{ $number }}</p>
-                <h3 class="mt-3 font-display text-xl font-semibold tracking-[-0.03em] text-ink">{{ $title }}</h3>
-                <p class="mt-2 text-sm leading-relaxed text-ink-soft">{{ $body }}</p>
-              </div>
+          @php
+            $phases = [
+                [
+                    '01',
+                    'Perencanaan',
+                    [
+                        'Menganalisis kebutuhan pengguna',
+                        'Merumuskan masalah yang ingin diselesaikan',
+                        'Memahami proses bisnis yang berjalan',
+                        'Menetapkan tujuan yang ingin dicapai',
+                    ],
+                ],
+                [
+                    '02',
+                    'Analisis',
+                    [
+                        'Memetakan proses bisnis saat ini',
+                        'Mencari akar masalah',
+                        'Menentukan kebutuhan pengguna, baik fungsional maupun non-fungsional',
+                    ],
+                ],
+                [
+                    '03',
+                    'Desain',
+                    [
+                        'Merancang arsitektur sistem',
+                        'Merancang basis data',
+                        'Membuat tampilan antarmuka (UI)',
+                        'Menentukan spesifikasi perangkat lunak dan perangkat keras',
+                    ],
+                ],
+                [
+                    '04',
+                    'Implementasi',
+                    [
+                        'Menulis kode sesuai rancangan',
+                        'Menguji untuk menemukan bug atau kesalahan fungsi',
+                        'Melakukan instalasi dan penerapan sistem baru menggantikan sistem lama',
+                        'Melatih pengguna agar sistem dapat dioperasikan dengan baik',
+                    ],
+                ],
+            ];
+          @endphp
+
+          <ol class="mt-10 list-none border-t border-ink">
+            @foreach ($phases as [$number, $title, $bullets])
+              <li class="grid gap-4 border-b border-line py-6 sm:grid-cols-12 sm:gap-6">
+                <p class="font-mono text-[10px] tracking-[0.14em] text-cobalt sm:col-span-2">{{ $number }}</p>
+                <h3 class="font-display text-xl font-semibold tracking-[-0.03em] text-ink sm:col-span-3">
+                  {{ $title }}</h3>
+                <ul class="space-y-2 sm:col-span-7">
+                  @foreach ($bullets as $bullet)
+                    <li class="flex gap-2.5 text-sm leading-relaxed text-ink-soft">
+                      <span class="mt-2 size-1 shrink-0 bg-cobalt" aria-hidden="true"></span>
+                      <span>{{ $bullet }}</span>
+                    </li>
+                  @endforeach
+                </ul>
+              </li>
             @endforeach
-          </div>
+          </ol>
 
           <x-system-map class="mt-12 max-w-4xl" />
         </div>
@@ -188,9 +229,9 @@
               <h2 class="display max-w-[15ch] text-[clamp(2.4rem,4.5vw,4rem)] text-ink">Tenang di permukaan, rapi di
                 belakang.</h2>
               <p class="mt-6 max-w-[58ch] text-base leading-relaxed text-ink-soft">
-                Saya lebih tertarik pada aplikasi yang bisa dipahami ulang enam bulan kemudian daripada demo yang terlihat
-                mengesankan sekali. Itu berarti penamaan yang jelas, validasi yang tidak bisa dilewati, dan antarmuka yang
-                menunjukkan keadaan sebenarnya.
+                Saya tertarik membangun aplikasi yang tidak hanya berfungsi hari ini, tetapi juga tetap mudah dipahami
+                dan dikembangkan di kemudian hari. Bagi saya, kualitas software bukan sekedar fitur yang berhasil
+                dibuat, melainkan juga fitur tersebut harus bisa digunakan oleh user dengan baik dan semaksimal mungkin.
               </p>
               <a href="{{ route('about') }}"
                 class="mt-6 inline-flex items-center gap-2 border-b border-ink pb-1 font-mono text-[10px] uppercase tracking-[0.14em] text-ink transition-colors hover:border-cobalt hover:text-cobalt">
@@ -205,7 +246,7 @@
                   <p class="font-mono text-[9px] uppercase tracking-[0.14em] text-ink-faint">Lembar data</p>
                 </div>
                 <dl class="divide-y divide-line">
-                  @foreach ([['Nama', $profile->name], ['Peran', $profile->role], ['Lokasi', $profile->location], ['Fokus', 'Laravel / MySQL / Blade']] as [$label, $value])
+                  @foreach ([['Nama', $profile->name], ['Peran', $profile->role], ['Lokasi', $profile->location], ['Fokus', 'Laravel / React / Next.js / Git']] as [$label, $value])
                     <div class="flex items-start justify-between gap-4 px-4 py-3">
                       <dt class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">{{ $label }}
                       </dt>

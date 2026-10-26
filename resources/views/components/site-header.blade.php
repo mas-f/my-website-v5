@@ -30,6 +30,7 @@
           class="size-9 shrink-0 object-contain transition-opacity group-hover:opacity-80">
       @else
         <span
+          data-logo-fallback
           class="grid size-9 place-items-center border border-ink bg-ink font-mono text-[11px] font-medium tracking-widest text-paper-raised transition-colors group-hover:border-cobalt group-hover:bg-cobalt">
           FA
         </span>

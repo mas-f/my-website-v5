@@ -1,7 +1,8 @@
 @extends('layouts.public')
 
 @section('title', 'Tentang — ' . $profile->name)
-@section('description', 'Tentang Fikri Amrullah, full-stack developer di Garut yang berfokus pada aplikasi web Laravel
+@section('description',
+  'Tentang Fikri Amrullah, full-stack developer di Garut yang berfokus pada aplikasi web Laravel
   dan antarmuka yang jelas.')
 @section('canonical', route('about'))
 
@@ -19,8 +20,8 @@
           <h1 class="display max-w-[17ch] text-[clamp(3rem,5.5vw,5.2rem)] text-ink">Membangun dengan struktur, bukan
             tebakan.</h1>
           <p class="mt-6 max-w-[62ch] text-lg leading-relaxed text-ink-soft">
-            Saya {{ $profile->name }}, full-stack developer di {{ $profile->location }}. Saya membangun aplikasi web
-            dengan Laravel, Blade, MySQL, dan Tailwind CSS.
+            Saya {{ $profile->name }}, memiliki minat dalam bidang full-stack developer dan saya berasal dari
+            {{ $profile->location }}. Saya membangun aplikasi web dengan Laravel, React, Next.js, MySQL, dan Tailwind CSS.
           </p>
         </div>
       </div>
@@ -44,26 +45,28 @@
             <div class="lg:col-span-7">
               <div class="prose-log">
                 <p>
-                  Saya lebih tertarik pada aplikasi yang bisa dipahami ulang enam bulan kemudian daripada demo yang
-                  terlihat mengesankan sekali. Itu berarti penamaan yang jelas, validasi yang tidak bisa dilewati, dan
-                  antarmuka yang menunjukkan keadaan sebenarnya.
+                  Saya tertarik membangun aplikasi yang tidak hanya berfungsi hari ini, tetapi juga tetap mudah dipahami
+                  dan dikembangkan di kemudian hari. Bagi saya, kualitas software bukan sekedar fitur yang berhasil
+                  dibuat, melainkan juga fitur tersebut harus bisa digunakan oleh user dengan baik dan semaksimal mungkin.
                 </p>
                 <p>
-                  Sebagian besar pekerjaan saya berada di sisi server: merancang tabel, menulis alur controller, menjaga
-                  otorisasi, dan memastikan data yang keluar sesuai dengan yang seharusnya. Di sisi antarmuka, saya
-                  memakai Blade dan Tailwind CSS agar halaman tetap ringan dan mudah dirawat.
+                  Sebagian besar pekerjaan saya berada di sisi server, mulai dari merancang arsitektur sistem, membuat
+                  struktur database, menerapkan validasi, autentikasi dan otorisasi, hingga memastikan data diproses
+                  sesuai kebutuhan. Di sisi antarmuka, saya biasa menggunakan Laravel, React atau Next.js dan styling
+                  menggunakan Tailwind ataupun Bootstrap agar halaman tetap responsif, ringan, dan mudah dirawat.
                 </p>
                 <p>
-                  Situs ini sendiri adalah bagian dari cara saya bekerja. Panel admin yang mengelola project, pesan, dan
-                  CV adalah aplikasi Laravel yang sebenarnya, bukan mockup. Jika sebuah fitur tidak bisa dipakai, saya
-                  lebih memilih menyembunyikannya daripada menampilkan tombol yang tidak melakukan apa-apa.
+                  Portfolio ini juga menjadi bagian dari proses pengembangan dan penerapan prinsip tersebut. Saya berusaha
+                  memastikan bahwa setiap fitur yang dikembangkan memiliki fungsi yang jelas, setiap data ditangani dengan
+                  benar, dan setiap keputusan teknis memiliki alasan. Bagi saya, aplikasi yang baik bukan hanya terlihat
+                  meyakinkan, tetapi juga dapat digunakan dan dipelihara dengan baik.
                 </p>
               </div>
 
               <div class="mt-10 border-t border-ink pt-5">
                 <h2 class="font-display text-2xl font-semibold tracking-[-0.03em] text-ink">Fokus saat ini</h2>
                 <div class="mt-5 grid gap-4 sm:grid-cols-3">
-                  @foreach ([['Aplikasi Laravel', 'Alur server yang jelas dan bisa diuji.'], ['Panel admin', 'Kontrol konten yang aman dan tidak menyulitkan.'], ['Kualitas antarmuka', 'Hierarki, aksesibilitas, dan performa.']] as [$title, $body])
+                  @foreach ([['Web Aplikasi', 'Alur server yang jelas dan bisa diuji.'], ['Panel admin', 'Kontrol konten yang aman dan tidak menyulitkan.'], ['Kualitas antarmuka', 'Hierarki, aksesibilitas, dan performa.']] as [$title, $body])
                     <div class="border-t border-line pt-3">
                       <h3 class="text-sm font-semibold text-ink">{{ $title }}</h3>
                       <p class="mt-1 text-sm leading-relaxed text-ink-soft">{{ $body }}</p>
@@ -104,7 +107,8 @@
               <div class="mt-6 border-t border-cobalt pt-4">
                 <p class="font-mono text-[9px] uppercase tracking-[0.14em] text-cobalt">Catatan</p>
                 <p class="mt-2 text-sm leading-relaxed text-ink-soft">
-                  Tidak ada klaim pengalaman, klien, atau metrik yang tidak bisa diverifikasi di halaman ini.
+                  Setiap fitur harus punya tujuan, setiap interaksi harus bekerja, dan setiap data harus ditangani dengan
+                  benar.
                 </p>
               </div>
             </div>

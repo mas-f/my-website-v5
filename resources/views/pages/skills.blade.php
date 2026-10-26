@@ -1,8 +1,9 @@
 @extends('layouts.public')
 
 @section('title', 'Keahlian — ' . $profile->name)
-@section('description', 'Alat dan keahlian yang dipakai Fikri Amrullah untuk membangun aplikasi web Laravel: PHP, MySQL,
-  Blade, Tailwind CSS, JavaScript, dan pengujian.')
+@section('description',
+  'Toolkit dan keahlian Fikri Amrullah: PHP, Laravel, Node.js, MySQL, PostgreSQL, Blade, Livewire,
+  Tailwind CSS, Bootstrap, JavaScript, TypeScript, React, Next.js, Figma, Postman, Trello, dan pengujian.')
 @section('canonical', route('skills'))
 
 @section('content')
