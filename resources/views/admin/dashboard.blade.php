@@ -53,7 +53,7 @@
                                     <a href="{{ route('admin.projects.edit', $project) }}" class="font-medium text-ink hover:text-cobalt cursor-pointer">{{ $project->title }}</a>
                                     <p class="mt-1 font-mono text-[9px] text-ink-faint">/{{ $project->slug }}</p>
                                 </td>
-                                <td class="text-ink-soft">{{ $project->category }}</td>
+                                <td class="text-ink-soft">{{ $project->category?->name ?? '—' }}</td>
                                 <td>
                                     <span class="stamp {{ $project->status->stampClass() }}">{{ $project->status->label() }}</span>
                                 </td>

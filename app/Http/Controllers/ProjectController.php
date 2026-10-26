@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Project;
 use App\Models\SiteProfile;
 use Illuminate\View\View;
@@ -11,6 +12,7 @@ class ProjectController extends Controller
     public function index(): View
     {
         $projects = Project::query()
+            ->with('category')
             ->published()
             ->orderByDesc('is_featured')
             ->ordered()
@@ -19,7 +21,10 @@ class ProjectController extends Controller
         return view('projects.index', [
             'profile' => SiteProfile::current(),
             'projects' => $projects,
-            'categories' => $projects->pluck('category')->unique()->values(),
+            'categories' => Category::query()
+                ->whereHas('projects', fn ($query) => $query->published())
+                ->ordered()
+                ->get(),
         ]);
     }
 
@@ -27,12 +32,13 @@ class ProjectController extends Controller
     {
         abort_unless($project->isPublished(), 404);
 
-        $project->load('images');
+        $project->load('images', 'category');
 
         return view('projects.show', [
             'profile' => SiteProfile::current(),
             'project' => $project,
             'related' => Project::query()
+                ->with('category')
                 ->published()
                 ->where('id', '!=', $project->getKey())
                 ->ordered()

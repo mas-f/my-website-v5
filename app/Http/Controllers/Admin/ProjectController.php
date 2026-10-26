@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Enums\ProjectStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
+use App\Models\Category;
 use App\Models\Project;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -17,6 +18,7 @@ class ProjectController extends Controller
     public function index(Request $request): View
     {
         $projects = Project::query()
+            ->with('category')
             ->withCount('images')
             ->when($request->filled('status'), fn ($query) => $query->where('status', $request->string('status')))
             ->when($request->filled('q'), function ($query) use ($request) {
@@ -25,7 +27,7 @@ class ProjectController extends Controller
                 $query->where(function ($query) use ($search) {
                     $query->where('title', 'like', $search)
                         ->orWhere('summary', 'like', $search)
-                        ->orWhere('category', 'like', $search);
+                        ->orWhereHas('category', fn ($query) => $query->where('name', 'like', $search));
                 });
             })
             ->latest()
@@ -44,7 +46,7 @@ class ProjectController extends Controller
                 'status' => ProjectStatus::Draft,
                 'sort_order' => (int) Project::query()->max('sort_order') + 1,
             ]),
-            'categories' => $this->categories(),
+            'categories' => Category::query()->ordered()->get(),
             'statuses' => ProjectStatus::cases(),
         ]);
     }
@@ -63,7 +65,7 @@ class ProjectController extends Controller
 
     public function show(Project $project): View
     {
-        $project->load('images');
+        $project->load('images', 'category');
 
         return view('admin.projects.show', [
             'project' => $project,
@@ -72,11 +74,11 @@ class ProjectController extends Controller
 
     public function edit(Project $project): View
     {
-        $project->load('images');
+        $project->load('images', 'category');
 
         return view('admin.projects.edit', [
             'project' => $project,
-            'categories' => $this->categories(),
+            'categories' => Category::query()->ordered()->get(),
             'statuses' => ProjectStatus::cases(),
         ]);
     }
@@ -129,7 +131,7 @@ class ProjectController extends Controller
             'description' => $request->string('description')->toString(),
             'problem_statement' => $request->input('problem_statement'),
             'solution' => $request->input('solution'),
-            'category' => $request->string('category')->toString(),
+            'category_id' => $request->integer('category_id'),
             'features' => $this->lines($request->input('features')),
             'technologies' => $this->lines($request->input('technologies'), true),
             'live_url' => $request->input('live_url'),
@@ -204,20 +206,6 @@ class ProjectController extends Controller
             ->map(fn (string $line): string => trim($line))
             ->filter()
             ->unique()
-            ->values()
-            ->all();
-    }
-
-    /**
-     * @return array<int, string>
-     */
-    private function categories(): array
-    {
-        return Project::query()
-            ->distinct()
-            ->orderBy('category')
-            ->pluck('category')
-            ->filter()
             ->values()
             ->all();
     }

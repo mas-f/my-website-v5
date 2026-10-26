@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Project;
 use App\Models\SiteProfile;
 use Illuminate\Support\Facades\Storage;
@@ -34,6 +35,38 @@ test('project index only shows published projects', function () {
         ->assertOk()
         ->assertSee($published->title)
         ->assertDontSee($draft->title);
+});
+
+test('project index only shows categories with published projects', function () {
+    $publishedCategory = Category::factory()->create([
+        'name' => 'Kategori Publik',
+        'slug' => 'kategori-publik',
+    ]);
+    $draftCategory = Category::factory()->create([
+        'name' => 'Kategori Draft',
+        'slug' => 'kategori-draft',
+    ]);
+    $emptyCategory = Category::factory()->create([
+        'name' => 'Kategori Kosong',
+        'slug' => 'kategori-kosong',
+    ]);
+
+    Project::factory()->create([
+        'title' => 'Project Kategori Publik',
+        'category_id' => $publishedCategory->id,
+    ]);
+    Project::factory()->draft()->create([
+        'title' => 'Project Kategori Draft',
+        'category_id' => $draftCategory->id,
+    ]);
+
+    $this->get(route('projects.index'))
+        ->assertOk()
+        ->assertSee('Kategori Publik')
+        ->assertDontSee('Kategori Draft')
+        ->assertDontSee('Kategori Kosong')
+        ->assertSee('data-filter="kategori-publik"', false)
+        ->assertSee('data-category="kategori-publik"', false);
 });
 
 test('published project detail is visible', function () {

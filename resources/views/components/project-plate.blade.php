@@ -82,7 +82,7 @@
     </span>
     <span
       class="border border-line-strong bg-paper-raised px-2 py-1 font-mono text-[9px] uppercase tracking-[0.14em] text-ink-soft">
-      {{ $project->category }}
+      {{ $project->category?->name ?? '—' }}
     </span>
   </div>
 

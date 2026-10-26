@@ -20,7 +20,7 @@ class DashboardController extends Controller
                 'drafts' => Project::query()->where('status', 'draft')->count(),
                 'unread' => ContactMessage::query()->unread()->count(),
             ],
-            'recentProjects' => Project::query()->latest()->take(5)->get(),
+            'recentProjects' => Project::query()->with('category')->latest()->take(5)->get(),
             'recentMessages' => ContactMessage::query()->latest()->take(5)->get(),
         ]);
     }

@@ -1,7 +1,7 @@
 @props(['project', 'index'])
 
 <article class="ledger-row group grid-cols-12 items-start gap-y-5 sm:gap-x-6" data-project-row
-  data-category="{{ $project->category }}">
+  data-category="{{ $project->category?->slug }}">
   <div class="col-span-12 flex items-center justify-between sm:col-span-1 sm:block">
     <span
       class="font-mono text-[11px] tracking-[0.16em] text-cobalt">{{ str_pad((string) $index, 2, '0', STR_PAD_LEFT) }}</span>
@@ -11,7 +11,7 @@
 
   <div class="col-span-12 sm:col-span-7">
     <div class="flex flex-wrap items-center gap-2">
-      <span class="stamp stamp-cobalt">{{ $project->category }}</span>
+      <span class="stamp stamp-cobalt">{{ $project->category?->name ?? 'Tanpa kategori' }}</span>
       @if ($project->is_placeholder)
         <span class="stamp stamp-manila">Contoh</span>
       @endif

@@ -41,8 +41,8 @@
                 Semua
               </button>
               @foreach ($categories as $category)
-                <button type="button" data-filter="{{ $category }}" aria-pressed="false" class="filter-chip cursor-pointer">
-                  {{ $category }}
+                <button type="button" data-filter="{{ $category->slug }}" aria-pressed="false" class="filter-chip cursor-pointer">
+                  {{ $category->name }}
                 </button>
               @endforeach
             </div>

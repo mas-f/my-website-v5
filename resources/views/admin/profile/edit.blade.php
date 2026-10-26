@@ -3,7 +3,7 @@
 @section('title', 'Profil & CV — Admin')
 
 @section('content')
-  <x-admin.page-header eyebrow="04 / Profil & CV" title="Profil publik & CV"
+  <x-admin.page-header eyebrow="05 / Profil & CV" title="Profil publik & CV"
     description="Identitas, foto profil, logo situs, tautan publik, dan file CV yang bisa diunduh.">
     <x-slot:actions>
       <a href="{{ route('home') }}" class="btn btn-secondary cursor-pointer" target="_blank" rel="noopener noreferrer">Lihat situs ↗</a>
