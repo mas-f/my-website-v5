@@ -36,7 +36,7 @@
       <div class="mt-8 grid gap-8 lg:grid-cols-12">
         <div class="lg:col-span-3">
           <div class="flex flex-wrap gap-2">
-            <span class="stamp stamp-cobalt">{{ $project->category }}</span>
+            <span class="stamp stamp-cobalt">{{ $project->category?->name ?? 'Tanpa kategori' }}</span>
             @if ($project->is_placeholder)
               <span class="stamp stamp-manila">Contoh</span>
             @endif
@@ -111,7 +111,7 @@
         <figcaption
           class="mt-3 flex flex-col gap-2 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint sm:flex-row sm:items-center sm:justify-between">
           <span>Fig. {{ str_pad((string) $project->id, 2, '0', STR_PAD_LEFT) }} — diagram alur sistem</span>
-          <span>{{ $project->category }} / {{ $project->published_at?->format('Y') ?? '—' }}</span>
+          <span>{{ $project->category?->name ?? '—' }} / {{ $project->published_at?->format('Y') ?? '—' }}</span>
         </figcaption>
       </figure>
     </div>
@@ -130,7 +130,7 @@
               </div>
               <div class="py-3">
                 <dt class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">Kategori</dt>
-                <dd class="mt-1 text-sm text-ink">{{ $project->category }}</dd>
+                <dd class="mt-1 text-sm text-ink">{{ $project->category?->name ?? 'Tanpa kategori' }}</dd>
               </div>
               <div class="py-3">
                 <dt class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">Stack</dt>

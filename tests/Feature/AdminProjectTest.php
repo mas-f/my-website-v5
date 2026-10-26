@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Category;
 use App\Models\Project;
 use App\Models\User;
 use Illuminate\Http\UploadedFile;
@@ -7,10 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 beforeEach(function () {
     $this->admin = User::factory()->admin()->create();
+    $this->category = Category::factory()->create(['name' => 'Web App', 'slug' => 'web-app']);
     Storage::fake('public');
 });
 
-function adminProjectPayload(array $overrides = []): array
+function adminProjectPayload(array $overrides = [], ?int $categoryId = null): array
 {
     return array_merge([
         'title' => 'Sistem Arsip Digital',
@@ -19,7 +21,7 @@ function adminProjectPayload(array $overrides = []): array
         'description' => 'Catatan teknis tentang struktur data, otorisasi, dan alur kerja sistem arsip.',
         'problem_statement' => 'Arsip tersebar di banyak folder dan sulit ditemukan kembali.',
         'solution' => 'Satu sumber data dengan pencarian, kategori, dan hak akses yang jelas.',
-        'category' => 'Web App',
+        'category_id' => $categoryId ?? Category::factory()->create()->id,
         'features' => "Pencarian arsip\nKategori dokumen\nHak akses admin",
         'technologies' => 'Laravel, MySQL, Tailwind CSS',
         'live_url' => '',
@@ -31,7 +33,9 @@ function adminProjectPayload(array $overrides = []): array
     ], $overrides);
 }
 
-test('admin project index and create pages render', function () {
+test('admin project pages render', function () {
+    $project = Project::factory()->create();
+
     $this->actingAs($this->admin)
         ->get(route('admin.projects.index'))
         ->assertOk();
@@ -39,11 +43,19 @@ test('admin project index and create pages render', function () {
     $this->actingAs($this->admin)
         ->get(route('admin.projects.create'))
         ->assertOk();
+
+    $this->actingAs($this->admin)
+        ->get(route('admin.projects.edit', $project))
+        ->assertOk();
+
+    $this->actingAs($this->admin)
+        ->get(route('admin.projects.show', $project))
+        ->assertOk();
 });
 
 test('admin can create a project', function () {
     $response = $this->actingAs($this->admin)
-        ->post(route('admin.projects.store'), adminProjectPayload());
+        ->post(route('admin.projects.store'), adminProjectPayload([], $this->category->id));
 
     $project = Project::query()->firstOrFail();
 
@@ -51,6 +63,7 @@ test('admin can create a project', function () {
 
     expect($project->title)->toBe('Sistem Arsip Digital')
         ->and($project->slug)->toBe('sistem-arsip-digital')
+        ->and($project->category_id)->toBe($this->category->id)
         ->and($project->features)->toBe(['Pencarian arsip', 'Kategori dokumen', 'Hak akses admin'])
         ->and($project->technologies)->toBe(['Laravel', 'MySQL', 'Tailwind CSS'])
         ->and($project->isPublished())->toBeTrue()
@@ -60,7 +73,7 @@ test('admin can create a project', function () {
 test('admin project validation rejects incomplete data', function () {
     $this->actingAs($this->admin)
         ->post(route('admin.projects.store'), [])
-        ->assertSessionHasErrors(['title', 'summary', 'description', 'category', 'status', 'sort_order']);
+        ->assertSessionHasErrors(['title', 'summary', 'description', 'category_id', 'status', 'sort_order']);
 
     expect(Project::query()->count())->toBe(0);
 });
@@ -77,7 +90,7 @@ test('admin can update a project and change its publication status', function ()
             'title' => 'Judul Baru',
             'slug' => 'judul-baru',
             'status' => 'draft',
-        ]));
+        ], $this->category->id));
 
     $project->refresh();
 
@@ -85,8 +98,26 @@ test('admin can update a project and change its publication status', function ()
 
     expect($project->title)->toBe('Judul Baru')
         ->and($project->slug)->toBe('judul-baru')
+        ->and($project->category_id)->toBe($this->category->id)
         ->and($project->isDraft())->toBeTrue()
         ->and($project->published_at)->toBeNull();
+});
+
+test('admin can search projects by category name', function () {
+    $category = Category::factory()->create(['name' => 'Data Pipeline', 'slug' => 'data-pipeline']);
+    $match = Project::factory()->create([
+        'title' => 'Proyek Pencocokan',
+        'category_id' => $category->id,
+    ]);
+    $other = Project::factory()->create([
+        'title' => 'Proyek Lain',
+    ]);
+
+    $this->actingAs($this->admin)
+        ->get(route('admin.projects.index', ['q' => 'Data Pipeline']))
+        ->assertOk()
+        ->assertSee($match->title)
+        ->assertDontSee($other->title);
 });
 
 test('admin can upload a thumbnail and gallery images', function () {
@@ -98,7 +129,7 @@ test('admin can upload a thumbnail and gallery images', function () {
         ->post(route('admin.projects.store'), adminProjectPayload([
             'thumbnail' => $thumbnail,
             'gallery' => [$galleryOne, $galleryTwo],
-        ]))
+        ], $this->category->id))
         ->assertRedirect();
 
     $project = Project::query()->firstOrFail();

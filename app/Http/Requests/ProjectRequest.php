@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Enums\ProjectStatus;
+use App\Models\Category;
 use App\Models\Project;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -36,7 +37,7 @@ class ProjectRequest extends FormRequest
             'description' => ['required', 'string', 'max:20000'],
             'problem_statement' => ['nullable', 'string', 'max:10000'],
             'solution' => ['nullable', 'string', 'max:10000'],
-            'category' => ['required', 'string', 'max:100'],
+            'category_id' => ['required', 'integer', Rule::exists(Category::class, 'id')],
             'features' => ['nullable', 'string', 'max:5000'],
             'technologies' => ['nullable', 'string', 'max:5000'],
             'thumbnail' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:4096'],
@@ -57,7 +58,8 @@ class ProjectRequest extends FormRequest
             'title.required' => 'Judul project wajib diisi.',
             'summary.required' => 'Ringkasan wajib diisi.',
             'description.required' => 'Deskripsi wajib diisi.',
-            'category.required' => 'Kategori wajib diisi.',
+            'category_id.required' => 'Kategori wajib dipilih.',
+            'category_id.exists' => 'Kategori yang dipilih tidak valid.',
             'status.required' => 'Status wajib dipilih.',
             'sort_order.required' => 'Urutan wajib diisi.',
             'thumbnail.image' => 'Thumbnail harus berupa gambar.',

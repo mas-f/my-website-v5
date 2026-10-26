@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\ContactMessageController as AdminContactMessageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
@@ -44,6 +45,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/', DashboardController::class)->name('dashboard');
 
         Route::resource('projects', AdminProjectController::class);
+        Route::resource('categories', AdminCategoryController::class)->except(['show']);
         Route::post('projects/{project}/images', [ProjectImageController::class, 'store'])
             ->name('projects.images.store');
         Route::delete('projects/{project}/images/{image}', [ProjectImageController::class, 'destroy'])

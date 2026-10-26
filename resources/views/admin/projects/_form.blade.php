@@ -99,14 +99,19 @@
                     </div>
 
                     <div>
-                        <label for="category" class="label">Kategori <span class="text-stamp">*</span></label>
-                        <input type="text" name="category" id="category" value="{{ old('category', $project->category) }}" class="field @error('category') field-error @enderror" list="category-options" required>
-                        <datalist id="category-options">
+                        <label for="category_id" class="label">Kategori <span class="text-stamp">*</span></label>
+                        <select name="category_id" id="category_id" class="field @error('category_id') field-error @enderror" required>
+                            <option value="" disabled @selected(old('category_id', $project->category_id) === null)>Pilih kategori</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category }}"></option>
+                                <option value="{{ $category->id }}" @selected((string) old('category_id', $project->category_id) === (string) $category->id)>{{ $category->name }}</option>
                             @endforeach
-                        </datalist>
-                        @error('category') <p class="error">{{ $message }}</p> @enderror
+                        </select>
+                        @if ($categories->isEmpty())
+                            <p class="help">Belum ada kategori. <a href="{{ route('admin.categories.create') }}" class="text-cobalt hover:underline cursor-pointer">Buat kategori</a> terlebih dahulu.</p>
+                        @else
+                            <p class="help">Kategori dikelola di <a href="{{ route('admin.categories.index') }}" class="text-cobalt hover:underline cursor-pointer">halaman kategori</a>.</p>
+                        @endif
+                        @error('category_id') <p class="error">{{ $message }}</p> @enderror
                     </div>
 
                     <div>

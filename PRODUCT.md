@@ -27,7 +27,7 @@ The portfolio is both the proof and the product: every public project is managed
 ## Operating Context
 
 - Public pages: home, about, skills, projects, project detail, services, contact.
-- Admin area under `/admin`: dashboard, project CRUD, message management, public profile, profile photo, and CV management.
+- Admin area under `/admin`: dashboard, project CRUD, category CRUD, message management, public profile, profile photo, and CV management.
 - Content language is Indonesian; technical terms may remain in English.
 - Projects are stored in MySQL and published or drafted from the admin.
 - Contact messages are stored before any email notification is attempted.

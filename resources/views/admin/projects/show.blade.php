@@ -18,7 +18,7 @@
 
     <div class="mt-6 flex flex-wrap gap-2">
         <span class="stamp {{ $project->status->stampClass() }}">{{ $project->status->label() }}</span>
-        <span class="stamp stamp-cobalt">{{ $project->category }}</span>
+        <span class="stamp stamp-cobalt">{{ $project->category?->name ?? 'Tanpa kategori' }}</span>
         @if ($project->is_featured) <span class="stamp stamp-success">Pilihan</span> @endif
         @if ($project->is_placeholder) <span class="stamp stamp-manila">Contoh</span> @endif
     </div>
@@ -81,7 +81,7 @@
                 <dl class="divide-y divide-line">
                     @foreach ([
                         ['Slug', $project->slug],
-                        ['Kategori', $project->category],
+                        ['Kategori', $project->category?->name ?? '—'],
                         ['Urutan', (string) $project->sort_order],
                         ['Publikasi', $project->published_at?->translatedFormat('d F Y') ?? '—'],
                         ['Diperbarui', $project->updated_at->translatedFormat('d F Y H:i')],

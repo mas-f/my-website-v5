@@ -33,14 +33,15 @@
     $nav = [
         ['label' => 'Dashboard', 'route' => 'admin.dashboard', 'pattern' => 'admin.dashboard', 'number' => '01'],
         ['label' => 'Project', 'route' => 'admin.projects.index', 'pattern' => 'admin.projects.*', 'number' => '02'],
+        ['label' => 'Kategori', 'route' => 'admin.categories.index', 'pattern' => 'admin.categories.*', 'number' => '03'],
         [
             'label' => 'Pesan',
             'route' => 'admin.messages.index',
             'pattern' => 'admin.messages.*',
-            'number' => '03',
+            'number' => '04',
             'count' => $unreadCount,
         ],
-        ['label' => 'Profil & CV', 'route' => 'admin.profile.edit', 'pattern' => 'admin.profile.*', 'number' => '04'],
+        ['label' => 'Profil & CV', 'route' => 'admin.profile.edit', 'pattern' => 'admin.profile.*', 'number' => '05'],
     ];
   @endphp
 

@@ -1,4 +1,4 @@
-@if (session('success') || $errors->any())
+@if (session('success') || session('error') || $errors->any())
   <div class="border-b border-line bg-paper-raised" role="status" aria-live="polite">
     <div class="mx-auto flex max-w-360 items-start gap-3 px-5 py-3 sm:px-8 lg:px-12">
       @if (session('success'))
@@ -10,6 +10,11 @@
           </svg>
         </span>
         <p class="text-sm leading-relaxed text-ink-soft">{{ session('success') }}</p>
+      @elseif (session('error'))
+        <span
+          class="mt-0.5 grid size-5 shrink-0 place-items-center border border-stamp bg-stamp-wash font-mono text-[10px] text-stamp"
+          aria-hidden="true">!</span>
+        <p class="text-sm leading-relaxed text-ink-soft">{{ session('error') }}</p>
       @else
         <span
           class="mt-0.5 grid size-5 shrink-0 place-items-center border border-stamp bg-stamp-wash font-mono text-[10px] text-stamp"

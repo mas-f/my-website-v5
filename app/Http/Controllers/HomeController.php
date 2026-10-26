@@ -13,6 +13,7 @@ class HomeController extends Controller
         return view('pages.home', [
             'profile' => SiteProfile::current(),
             'projects' => Project::query()
+                ->with('category')
                 ->published()
                 ->orderByDesc('is_featured')
                 ->ordered()

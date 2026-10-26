@@ -3,18 +3,29 @@
 namespace Database\Seeders;
 
 use App\Enums\ProjectStatus;
+use App\Models\Category;
 use App\Models\Project;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Str;
 
 class DemoProjectSeeder extends Seeder
 {
     public function run(): void
     {
+        $categoryIds = [];
+
+        foreach (['Web App' => 1, 'Company Profile' => 2, 'E-Commerce' => 3, 'Dashboard' => 4] as $name => $sortOrder) {
+            $categoryIds[$name] = Category::query()->firstOrCreate(
+                ['slug' => Str::slug($name)],
+                ['name' => $name, 'sort_order' => $sortOrder],
+            )->id;
+        }
+
         $projects = [
             [
                 'title' => 'Contoh — Sistem Manajemen Konten',
                 'slug' => 'contoh-sistem-manajemen-konten',
-                'category' => 'Web App',
+                'category_id' => $categoryIds['Web App'],
                 'summary' => 'Project contoh untuk memperlihatkan bagaimana sebuah studi kasus disusun: masalah, pendekatan, keputusan teknis, dan hasil yang bisa diverifikasi.',
                 'problem_statement' => "Tim konten masih memperbarui halaman melalui file dan menunggu developer untuk setiap perubahan. Proses ini lambat, rawan salah, dan tidak punya jejak revisi.\n\nProject contoh ini menggambarkan kebutuhan sebuah panel admin sederhana yang bisa dipakai orang non-teknis tanpa mengorbankan kontrol akses.",
                 'solution' => "Membangun panel admin berbasis Laravel dengan autentikasi, otorisasi per peran, validasi server-side, dan pengelolaan konten yang dapat dipublikasikan atau disimpan sebagai draft.\n\nAlur kerja dibuat pendek: masuk, pilih konten, sunting, simpan, lalu publikasikan. Setiap perubahan penting dicatat agar mudah ditelusuri.",
@@ -33,7 +44,7 @@ class DemoProjectSeeder extends Seeder
             [
                 'title' => 'Contoh — Company Profile Studio',
                 'slug' => 'contoh-company-profile-studio',
-                'category' => 'Company Profile',
+                'category_id' => $categoryIds['Company Profile'],
                 'summary' => 'Project contoh untuk halaman company profile yang menonjolkan karya, layanan, dan jalur kontak tanpa membuat pengunjung menebak.',
                 'problem_statement' => "Sebuah studio kecil punya banyak karya, tetapi informasinya tersebar di media sosial dan dokumen presentasi. Calon klien sulit memahami layanan dan cara menghubungi tim.\n\nProject contoh ini menggambarkan situs yang menyatukan identitas, layanan, portofolio, dan kontak dalam satu alur yang tenang dan mudah dipindai.",
                 'solution' => "Menyusun halaman company profile dengan hierarki konten yang jelas, navigasi yang konsisten, dan formulir kontak yang menyimpan pesan ke database sebelum mengirim notifikasi.\n\nGambar dan teks dikelola dari admin agar tim bisa memperbarui situs tanpa menyentuh kode.",
@@ -52,7 +63,7 @@ class DemoProjectSeeder extends Seeder
             [
                 'title' => 'Contoh — Katalog Produk',
                 'slug' => 'contoh-katalog-produk',
-                'category' => 'E-Commerce',
+                'category_id' => $categoryIds['E-Commerce'],
                 'summary' => 'Project contoh untuk katalog produk dengan filter kategori, halaman detail, dan alur pengelolaan stok yang sederhana.',
                 'problem_statement' => "Katalog produk yang terus bertambah sulit dipindai jika semua item ditampilkan dengan bobot yang sama. Pengunjung perlu cara cepat untuk menyaring produk berdasarkan kategori dan kebutuhan.\n\nProject contoh ini menggambarkan katalog yang tetap ringan di perangkat mobile dan mudah diperbarui oleh admin.",
                 'solution' => "Membangun daftar produk dengan filter kategori, pencarian, dan halaman detail yang menyajikan informasi penting lebih dulu. Data produk dikelola melalui admin dengan validasi dan pengurutan yang jelas.\n\nGambar produk disimpan di storage publik dan dioptimalkan sebelum ditampilkan.",
@@ -71,7 +82,7 @@ class DemoProjectSeeder extends Seeder
             [
                 'title' => 'Contoh — Dashboard Operasional',
                 'slug' => 'contoh-dashboard-operasional',
-                'category' => 'Dashboard',
+                'category_id' => $categoryIds['Dashboard'],
                 'summary' => 'Project contoh untuk dashboard internal yang merangkum data operasional, status pekerjaan, dan tindakan yang perlu diambil.',
                 'problem_statement' => "Data operasional tersebar di beberapa spreadsheet. Tim menghabiskan waktu untuk menyusun laporan manual dan sering melewatkan pekerjaan yang terlambat.\n\nProject contoh ini menggambarkan satu layar ringkas yang membantu tim melihat prioritas tanpa tenggelam dalam angka.",
                 'solution' => "Merancang dashboard dengan ringkasan metrik, tabel pekerjaan, dan filter tanggal. Setiap angka memiliki konteks dan tautan ke data sumber agar keputusan tidak diambil berdasarkan tampilan kosong.\n\nAkses dibatasi berdasarkan peran dan semua perubahan dicatat.",
