@@ -1,10 +1,36 @@
 @extends('layouts.public')
 
-@section('title', 'Tentang — ' . $profile->name)
+@section('title', 'Tentang ' . $profile->name . ' — ' . $profile->role . ' di Garut')
 @section('description',
-  'Tentang Fikri Amrullah, full-stack developer di Garut yang berfokus pada aplikasi web Laravel
-  dan antarmuka yang jelas.')
+  'Profil Fikri Amrullah, full-stack developer, di Garut, menekuni pengembangan produk aplikasi web
+  dan bertujuan berkarier di bidang full-stack.')
 @section('canonical', route('about'))
+
+@push('head')
+  <script type="application/ld+json">
+        {!! json_encode([
+            '@context' => 'https://schema.org',
+            '@type' => 'ProfilePage',
+            'url' => route('about'),
+            'name' => 'Tentang ' . $profile->name,
+            'description' => 'Profil ' . $profile->name . ', ' . $profile->role . ' di Garut yang menekuni pengembangan produk web Laravel.',
+            'mainEntity' => [
+                '@type' => 'Person',
+                'name' => $profile->name,
+                'jobTitle' => $profile->role,
+                'url' => route('home'),
+                'email' => 'mailto:' . $profile->email,
+                'address' => [
+                    '@type' => 'PostalAddress',
+                    'addressLocality' => 'Garut',
+                    'addressCountry' => 'ID',
+                ],
+                'knowsAbout' => ['Laravel', 'PHP', 'React', 'Next.js', 'MySQL', 'Tailwind CSS'],
+                'sameAs' => array_values(array_filter([$profile->github_url, $profile->linkedin_url])),
+            ],
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+    </script>
+@endpush
 
 @section('content')
   <section class="paper-grid border-b border-line">
@@ -20,8 +46,9 @@
           <h1 class="display max-w-[17ch] text-[clamp(3rem,5.5vw,5.2rem)] text-ink">Membangun dengan struktur, bukan
             tebakan.</h1>
           <p class="mt-6 max-w-[62ch] text-lg leading-relaxed text-ink-soft">
-            Saya {{ $profile->name }}, memiliki minat dalam bidang full-stack developer dan saya berasal dari
-            {{ $profile->location }}. Saya membangun aplikasi web dengan Laravel, React, Next.js, MySQL, dan Tailwind CSS.
+            Saya {{ $profile->name }}, full-stack developer yang berbasis di {{ $profile->location }}. Saya membangun
+            aplikasi web dari perencanaan dan struktur data sampai antarmuka, dengan Laravel, React, Next.js, MySQL, dan
+            Tailwind CSS.
           </p>
         </div>
       </div>
@@ -94,7 +121,8 @@
                   <p class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">CV</p>
                   @if ($profile->hasCv())
                     <a href="{{ $profile->cv_url }}"
-                      class="mt-1 inline-flex items-center gap-2 text-sm text-cobalt hover:underline cursor-pointer" download>
+                      class="mt-1 inline-flex items-center gap-2 text-sm text-cobalt hover:underline cursor-pointer"
+                      download>
                       Unduh CV
                       <span aria-hidden="true">↓</span>
                     </a>
@@ -119,6 +147,65 @@
   </section>
 
   <section class="border-b border-line">
+    <div class="mx-auto max-w-360 px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
+      <div class="grid gap-12 lg:grid-cols-12 lg:gap-8">
+        <div class="lg:col-span-3">
+          <div class="lg:sticky lg:top-28">
+            <p class="eyebrow">Minat &amp; tujuan</p>
+            <p class="mt-3 max-w-[22ch] text-sm leading-relaxed text-ink-soft">
+              Apa yang saya kejar setelah halaman ini selesai dibaca.
+            </p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-9">
+          <div class="grid gap-10 lg:grid-cols-12">
+            <div class="lg:col-span-7">
+              <h2 class="display max-w-[18ch] text-[clamp(2.2rem,4vw,3.4rem)] text-ink">
+                Minat pada produk utuh, bukan potongan fitur.
+              </h2>
+              <p class="mt-6 max-w-[58ch] text-base leading-relaxed text-ink-soft">
+                Saya paling menikmati pekerjaan yang menyatukan seluruh bagian produk: memahami masalah, merancang data
+                dan alur server, lalu membangun antarmuka yang bisa dipakai tanpa membingungkan. Laravel dan Tailwind CSS
+                menjadi alat utama, dengan React atau Next.js saat dibutuhkan.
+              </p>
+            </div>
+
+            <div class="lg:col-span-5">
+              <div class="sheet-flat">
+                <div class="flex items-center justify-between border-b border-line bg-paper-deep px-4 py-3">
+                  <p class="font-mono text-[9px] uppercase tracking-[0.14em] text-ink-faint">Arah</p>
+                  <span class="stamp stamp-cobalt">Tujuan</span>
+                </div>
+                <dl class="divide-y divide-line">
+                  @foreach ([['Fokus', 'Full-stack product building'], ['Arah', 'Karier full-stack & produk sendiri'], ['Basis', 'Laravel / React / Next.js']] as [$label, $value])
+                    <div class="px-4 py-3">
+                      <dt class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">{{ $label }}</dt>
+                      <dd class="mt-1 text-sm text-ink">{{ $value }}</dd>
+                    </div>
+                  @endforeach
+                </dl>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10 border-t border-ink pt-5">
+            <h3 class="font-display text-2xl font-semibold tracking-[-0.03em] text-ink">Tujuan ke depan</h3>
+            <div class="mt-5 grid gap-4 sm:grid-cols-2">
+              @foreach ([['Jangka pendek', 'Bekerja sebagai full-stack developer di perusahaan, terlibat dalam produk nyata, dan belajar dari tim engineering yang lebih berpengalaman.'], ['Jangka panjang', 'Membangun produk sendiri yang menyelesaikan masalah nyata dan tetap mudah dirawat dalam jangka panjang.']] as [$title, $body])
+                <div class="border-t border-line pt-3">
+                  <h4 class="text-sm font-semibold text-ink">{{ $title }}</h4>
+                  <p class="mt-1 text-sm leading-relaxed text-ink-soft">{{ $body }}</p>
+                </div>
+              @endforeach
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-b border-line bg-paper-raised">
     <div class="mx-auto max-w-360 px-5 py-14 sm:px-8 lg:px-12 lg:py-20">
       <div class="grid gap-8 lg:grid-cols-12">
         <div class="lg:col-span-3">
@@ -149,7 +236,8 @@
         <a href="{{ route('projects.index') }}"
           class="btn bg-paper-raised text-ink hover:bg-cobalt hover:text-paper-raised cursor-pointer">Buka log project</a>
         <a href="{{ route('contact.create') }}"
-          class="btn border-paper/30 text-paper hover:border-paper hover:bg-paper hover:text-ink cursor-pointer">Hubungi saya</a>
+          class="btn border-paper/30 text-paper hover:border-paper hover:bg-paper hover:text-ink cursor-pointer">Hubungi
+          saya</a>
       </div>
     </div>
   </section>

@@ -1,9 +1,9 @@
 @extends('layouts.public')
 
-@section('title', 'Keahlian — ' . $profile->name)
+@section('title', 'Keahlian ' . $profile->name . ' — Laravel, React, MySQL')
 @section('description',
-  'Toolkit dan keahlian Fikri Amrullah: PHP, Laravel, Node.js, MySQL, PostgreSQL, Blade, Livewire,
-  Tailwind CSS, Bootstrap, JavaScript, TypeScript, React, Next.js, Figma, Postman, Trello, dan pengujian.')
+  'Keahlian Fikri Amrullah: PHP, Laravel, React, Next.js, MySQL, dan Tailwind CSS untuk membangun
+  produk web dari backend hingga antarmuka.')
 @section('canonical', route('skills'))
 
 @section('content')
