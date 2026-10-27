@@ -2,8 +2,8 @@
 
 @section('title', $profile->name . ' — ' . $profile->role)
 @section('description',
-  'Portofolio Fikri Amrullah, full-stack developer di Garut. Aplikasi web Laravel, panel admin,
-  dan antarmuka yang jelas.')
+  'Portofolio Fikri Amrullah, full-stack developer, di Garut. Membangun web aplikasi dari
+  perencanaan, database, hingga antarmuka.')
 @section('canonical', route('home'))
 
 @push('head')

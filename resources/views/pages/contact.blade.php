@@ -1,9 +1,9 @@
 @extends('layouts.public')
 
-@section('title', 'Kontak — ' . $profile->name)
+@section('title', 'Kontak ' . $profile->name . ' — ' . $profile->role . ' di Garut')
 @section('description',
-  'Hubungi Fikri Amrullah untuk membahas aplikasi web Laravel, perbaikan, atau konsultasi
-  teknis.')
+  'Hubungi Fikri Amrullah, full-stack developer, di Garut, untuk membahas aplikasi web,
+  perbaikan sistem, atau peluang kerja sama.')
 @section('canonical', route('contact.create'))
 
 @section('content')
@@ -123,8 +123,9 @@
                 </div>
                 <div class="px-4 py-4">
                   <p class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">GitHub</p>
-                  <a href="{{ $profile->github_url }}" class="mt-1 block break-all text-sm text-cobalt hover:underline cursor-pointer"
-                    target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                  <a href="{{ $profile->github_url }}"
+                    class="mt-1 block break-all text-sm text-cobalt hover:underline cursor-pointer" target="_blank"
+                    rel="noopener noreferrer">GitHub ↗</a>
                 </div>
                 @if ($profile->linkedin_url)
                   <div class="px-4 py-4">
@@ -142,7 +143,8 @@
                   <p class="font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint">CV</p>
                   @if ($profile->hasCv())
                     <a href="{{ $profile->cv_url }}"
-                      class="mt-1 inline-flex items-center gap-2 text-sm text-cobalt hover:underline cursor-pointer" download>
+                      class="mt-1 inline-flex items-center gap-2 text-sm text-cobalt hover:underline cursor-pointer"
+                      download>
                       Unduh CV
                       <span aria-hidden="true">↓</span>
                     </a>

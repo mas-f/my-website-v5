@@ -1,8 +1,9 @@
 @extends('layouts.public')
 
-@section('title', 'Layanan — ' . $profile->name)
-@section('description', 'Layanan pengembangan aplikasi web Laravel, perbaikan, company profile, dan konsultasi teknis
-  oleh Fikri Amrullah.')
+@section('title', 'Layanan Web Laravel — ' . $profile->name . ', Garut')
+@section('description',
+  'Layanan pengembangan aplikasi web oleh Fikri Amrullah: company profile, perbaikan
+  sistem, dan konsultasi teknis dari Garut, Indonesia.')
 @section('canonical', route('services'))
 
 @section('content')
