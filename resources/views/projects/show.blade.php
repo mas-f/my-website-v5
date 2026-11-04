@@ -74,7 +74,8 @@
           @if ($project->live_url || $project->repository_url)
             <div class="mt-8 flex flex-wrap gap-3">
               @if ($project->live_url)
-                <a href="{{ $project->live_url }}" class="btn btn-primary cursor-pointer" target="_blank" rel="noopener noreferrer">
+                <a href="{{ $project->live_url }}" class="btn btn-primary cursor-pointer" target="_blank"
+                  rel="noopener noreferrer">
                   Lihat hasil
                   <span aria-hidden="true">↗</span>
                 </a>
@@ -106,8 +107,8 @@
         </div>
       @endif
 
-      <figure>
-        <x-project-plate :project="$project" ratio="aspect-[16/8]" class="max-h-155" />
+      <figure class="mx-auto max-w-3xl">
+        <x-project-plate :project="$project" ratio="aspect-[4/3]" />
         <figcaption
           class="mt-3 flex flex-col gap-2 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-faint sm:flex-row sm:items-center sm:justify-between">
           <span>Fig. {{ str_pad((string) $project->id, 2, '0', STR_PAD_LEFT) }} — diagram alur sistem</span>
